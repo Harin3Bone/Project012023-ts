@@ -1,8 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+
 body{
     background-color: #e0e0e0;
-    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+*{
+    font-family: 'Lobster', cursive;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

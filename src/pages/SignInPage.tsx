@@ -1,20 +1,21 @@
 import React from 'react'
 
+
+//components
+import FormInputDefault from 'components/FormInputDefault'
+
 function SignInPage() {
   return (
-    // mx-80 margin: 0 20rem; /* 320px
-    //my-24  margin-top: 6rem margin-bottom: 6rem
-    <div className='SignInBody h-[45rem] mx-[20.5rem] my-[5%] border-8 border-[#111727] rounded-2xl drop-shadow-2xl overflow-y-hidden z-10'>
-      <div className='SignInFlex flex'>
-        <div className='SignInImg max-w-3xl'>
-          <img className='w-full h-[45rem]'  src="https://images.pexels.com/photos/1070534/pexels-photo-1070534.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
-        </div>
-        <div className='SignInContainer w-[30rem] h-[45rem] border-[#f7f8f6] bg-zinc-50'>
-          <h1>Welcome</h1>
-          <p>Please your details.</p>
-          <form action="">
-            <input type="text" />
-            <input type="password" />
+    <div className='mx-5 mt-[2.5rem]'>
+      <div className='h-[36rem] p-2.5 border-4 border-[#111727] rounded-2xl bg-zinc-50 drop-shadow-2xl overflow-hidden'>
+        <div className='flex justify-between flex-col'>
+          <div className='flex justify-center flex-col mt-[5rem] text-center'>
+            <h1>Welcome</h1>
+            <p>Please your details.</p>
+          </div>
+          <form className='flex justify-center flex-col mt-[5rem]'>
+            <FormInputDefault labelText={'email'} type={'text'}/>
+            <FormInputDefault labelText={'password'} type={'password'}/>
             <button>Sign in</button>
           </form>
         </div>
@@ -24,5 +25,3 @@ function SignInPage() {
 }
 
 export default SignInPage
-//50.68
-//27.3
