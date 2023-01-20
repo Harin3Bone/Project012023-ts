@@ -1,8 +1,17 @@
 import React from 'react'
 
+//components
+import FormSign from 'components/FormSign'
+
 function SignUpPage() {
   return (
-    <div>SignUpPage</div>
+    <div>
+      <FormSign 
+      header={'Create an account'}
+      description={"Let's get started."}
+      textButton={'Sign up'}
+      />
+    </div>
   )
 }
 

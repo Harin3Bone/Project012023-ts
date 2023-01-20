@@ -1,24 +1,23 @@
+/* InputDefault.jsx */
 .inputA:placeholder-shown ~ .form__label{
-    margin-top: -3.6rem;
+    margin-top: -4.6rem;
     color: #5e5959;
          
 }
 .inputA:focus ~ .form__label{
-    margin-top: -4.8rem;
+    margin-top: -5.8rem;
     transition: 0.2s;
     color: #111727;
     cursor: text;       
 }
 
-
 .form__label {
     position: absolute;
     display: block;
-    margin-top: -4.8rem;
+    margin-top: -5.8rem;
     transition: 0.2s;
     font-size: 1rem;
     color: #111727;
     z-index: 997;
     user-select: none;
 }
-
