@@ -1,30 +1,38 @@
-import { useState } from 'react'
-import {Routes,Route} from 'react-router-dom'
+import React, { useState } from "react";
+import { Routes, Route } from "react-router-dom";
 
 //Page
-import HomePage from 'pages/HomePage'
-import SignInPage from 'pages/SignInPage'
-import SignUpPage from 'pages/SignUpPage'
-import ErrorPage from 'pages/ErrorPage'
+import HomePage from "pages/HomePage";
+import SignInPage from "pages/SignInPage";
+import SignUpPage from "pages/SignUpPage";
+import ErrorPage from "pages/ErrorPage";
 
 //Components
-import Navbar from 'components/Navbar'
+import Navbar from "components/Navbar";
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <div>
-      <Navbar/>
       <Routes>
-        {/* signin , signup */}
-        <Route path="/" element={<HomePage/>}/>
-        <Route path="/signin" caseSensitive element={<SignInPage/>}/>
-        <Route path="/signup" caseSensitive element={<SignUpPage/>}/>
-        <Route path="*" element={<ErrorPage/>}/>
+        <Route path='/' element={<Navbar />}>
+          <Route index element={<HomePage />} caseSensitive />
+        </Route>
+        <Route
+          path='/signin'
+          element={<SignInPage/>}
+          caseSensitive
+        />
+        <Route
+          path='/signup'
+          element={<SignUpPage/>}
+          caseSensitive
+        />
+        <Route path='*' element={<ErrorPage />} />
       </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

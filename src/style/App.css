@@ -1,23 +1,38 @@
-/* InputDefault.jsx */
-.inputA:placeholder-shown ~ .form__label{
-    margin-top: -4.6rem;
-    color: #5e5959;
-         
-}
-.inputA:focus ~ .form__label{
-    margin-top: -5.8rem;
-    transition: 0.2s;
-    color: #111727;
-    cursor: text;       
+/* Navbar.jsx */
+.bar1,
+.bar2,
+.bar3 {
+  width: 35px;
+  height: 5px;
+  border-radius: 8px;
+  background-color: #fff;
+  margin: 6px 0;
+  transition: 0.4s;
 }
 
-.form__label {
-    position: absolute;
-    display: block;
-    margin-top: -5.8rem;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: #111727;
-    z-index: 997;
-    user-select: none;
+.bar2 {
+  opacity: 0;
+}
+
+/* InputDefault.jsx */
+.inputA:placeholder-shown ~ .form__p {
+  margin-top: -4.6rem;
+  color: #5e5959;
+}
+.inputA:focus ~ .form__p {
+  margin-top: -5.8rem;
+  transition: 0.2s;
+  color: #111727;
+  cursor: text;
+}
+
+.form__p {
+  position: absolute;
+  display: block;
+  margin-top: -5.8rem;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #111727;
+  z-index: 997;
+  user-select: none;
 }
