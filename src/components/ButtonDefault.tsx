@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef } from "react";
 //Omit ไม่เอา type ไหนบ้าง
 type ButtonDefaultPropTypes = Omit<ComponentPropsWithoutRef<"button">, "className" | "style">;
 

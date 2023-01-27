@@ -1,45 +1,21 @@
-import React from "react";
-
 //components
 import FormSign from "components/FormSign";
 import useUserAuth from "hook/useUserAuth";
 
+
 function SignInPage() {
   //useState hook
-  const { user, setUser } = useUserAuth();
-
-  //function
-  const onSubmitSignIn = (email: string, password: string) => {
-    console.log("SignIn", email, password);
-  };
+  const { informationForm,onHandleChangeInformationForm,onSubmitForm } = useUserAuth();
 
   return (
     <div>
       <FormSign
         formHeader={"Welcome"}
         formDescription={"Please your details."}
-        onSubmit={(event) => {
-          event.preventDefault();
-          onSubmitSignIn(user.email, user.password);
-        }}
-        emailValue={user.email}
-        onSetEmailValue={(param) => {
-          setUser((prev) => {
-            return {
-              ...prev,
-              email: param,
-            };
-          });
-        }}
-        passwordValue={user.password}
-        onSetPasswordValue={(param) => {
-          setUser((prev) => {
-            return {
-              ...prev,
-              password: param,
-            };
-          });
-        }}
+        onSubmit={(email:string, password: string) => onSubmitForm({email,password})}
+        emailValue={informationForm.email}
+        passwordValue={informationForm.password}
+        onChangeValue={(value: string, type: "email" | "password") => onHandleChangeInformationForm(value,type)}
         buttonLabel={"Sign in"}
       />
     </div>

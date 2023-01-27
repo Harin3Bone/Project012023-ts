@@ -1,6 +1,7 @@
-import React, { useId, ComponentPropsWithoutRef } from "react";
+import { useId } from "react";
 
 //components
+import { informationFormType } from "hook/useUserAuth";
 import InputDefault from "components/InputDefault";
 import ButtonDefault from "components/ButtonDefault";
 
@@ -10,24 +11,22 @@ import ButtonDefault from "components/ButtonDefault";
 type FormSignPropTypes = {
   formHeader: string;
   formDescription: string;
+  onSubmit: (email: string, password: string) => void
   emailValue: string;
-  onSetEmailValue: (arg: string) => void;
   passwordValue: string;
-  onSetPasswordValue: (arg: string) => void;
+  onChangeValue: (value:string, type:"email"|"password") => void
   buttonLabel: string;
-};
-type onSubmitForm = Pick<ComponentPropsWithoutRef<"form">, "onSubmit">;
+}
 
 function FormSign({
   formHeader,
   formDescription,
+  onSubmit,
   emailValue,
-  onSetEmailValue,
   passwordValue,
-  onSetPasswordValue,
-  buttonLabel,
-  ...props
-}: FormSignPropTypes & onSubmitForm) {
+  onChangeValue,
+  buttonLabel
+}: FormSignPropTypes) {
   //useId
   const inputEmailId = useId();
   const inputPasswordId = useId();
@@ -50,27 +49,34 @@ function FormSign({
           <p className='text-3xl mb-[1rem] sm:mt-[2rem] lg:text-4xl cursor-pointer'>{formHeader}</p>
           <p className='text-xl cursor-pointer lg:text-2xl'>{formDescription}</p>
         </div>
-        <form {...props} className='flex justify-center flex-col mt-[3rem]'>
+        <form className='flex justify-center flex-col mt-[3rem]'
+          onSubmit={(e) =>{
+            e.preventDefault()
+            onSubmit(emailValue, passwordValue)
+          }}
+        >
           <InputDefault
             label='Email'
-            type='text'
+            type='email'
             id={inputEmailId}
             value={emailValue}
             placeholder='Email'
             minLength={6}
+            required
             onChange={(e) => {
-              onSetEmailValue(e.target.value);
+              onChangeValue(e.target.value, "email")
             }}
           />
           <InputDefault
             label='Password'
-            type='Password'
+            type='password'
             id={inputPasswordId}
             value={passwordValue}
             placeholder='Password'
             minLength={6}
+            required
             onChange={(e) => {
-              onSetPasswordValue(e.target.value);
+              onChangeValue(e.target.value, "password")
             }}
           />
           <ButtonDefault type={"submit"}>{buttonLabel}</ButtonDefault>
@@ -82,7 +88,4 @@ function FormSign({
 
 export default FormSign;
 
-// onSubmit={(e) => {
-//   e.preventDefault();
-//   onSubmit();
-// }}
+// Pick<ComponentPropsWithoutRef<"form">, "onSubmit"> เลือก
