@@ -3,6 +3,7 @@ import {useContext} from 'react'
 import { Authentication } from 'context/auth/authenticateContext'
 
 function useAuthenticationContext() {
+  //useContext
   const context = useContext(Authentication)
 
   if(!context){

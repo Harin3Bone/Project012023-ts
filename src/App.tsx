@@ -2,19 +2,22 @@ import { Routes, Route } from "react-router-dom";
 
 //context
 import AuthenticationProvider from "context/auth/AuthenticationProvider";
+import PrivateRoute from "components/PrivateRoute";
 
 //Page
 import HomePage from "pages/HomePage";
 import AboutPage from "pages/AboutPage";
 import SignInPage from "pages/SignInPage";
 import SignUpPage from "pages/SignUpPage";
-import PrivateRoute from "components/PrivateRoute";
 import ErrorPage from "pages/ErrorPage";
 
 //Components
 import Navbar from "components/Navbar";
 
+
 function App() {
+  // console.log(import.meta.env.VITE_API_URL);
+  
   return (
     <AuthenticationProvider>
       <Routes>

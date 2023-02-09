@@ -1,13 +1,27 @@
-import { useContext } from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import { useEffect } from 'react'
+import { Navigate, Outlet, useNavigate } from 'react-router-dom'
 
-import { Authentication } from 'context/auth/authenticateContext'
+//hook
+import useAuthenticationContext from 'hook/useAuthenticationContext'
 
 //type
 type PrivateRoutePropsType = {}
 
 function PrivateRoute({}:PrivateRoutePropsType) {
-  const { token } = useContext(Authentication)
+  
+  //hook
+  const { token } = useAuthenticationContext()
+
+  //useNavigate
+  const navigate = useNavigate()
+
+  //useEffect
+  useEffect(() => {
+    if(!token){
+      navigate('/signin')
+    }
+  }, [token])
+  
   return token ? <Outlet /> : <Navigate to={"/"} />
 }
 

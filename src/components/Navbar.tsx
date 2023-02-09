@@ -1,72 +1,35 @@
 import { useMemo } from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link,  Outlet } from "react-router-dom";
 import "../style/App.css";
 
+//components
+import OnCreateLi from "./OnCreateLi";
+
 //hook
+import useUserAuth from "hook/useUserAuth";
 import useAuthenticationContext from "hook/useAuthenticationContext";
+
+//style
+import theme from "style/them";
 
 //reference https://www.ramotion.com/web-design/?utm_source=drbl&utm_medium=special&utm_campaign=20247474-Education-Website
 
-const fullMenuList = [
-  {
-    name: "about",
-    path: "/about",
-  },
-  {
-    name: "sign in",
-    path: "/signin",
-  },
-  {
-    name: "sign up",
-    path: "/signup",
-  },
-  {
-    name: "sign out",
-    path: "/",
-  },
-];
-
-const pathForToken = ["/about", "/"];
-
 function Navbar() {
+  //hook
+  const { onSignOut } = useUserAuth()
   const { token } = useAuthenticationContext();
 
   //useMemo
-  const menuList = useMemo(() => {
-    if (!token) {
-      return fullMenuList.filter((menu) => {
-        return pathForToken.includes(menu.path) ? null : menu;
-      });
+  const menuSignout = useMemo(()=>{
+    if(token){
+      return( 
+        <div className={`${theme.setStyleMenuUi.setContainerButton}`}>
+          <button className={`${theme.setStyleMenuUi.setStyleButton}`} onClick={() => onSignOut()}>sign out</button>
+        </div>
+       )
     }
-    if (token) {
-      return fullMenuList.filter((menu) => {
-        return pathForToken.includes(menu.path) ? menu : null;
-      });
-    } else return fullMenuList;
-  }, [token]);
-
-  //function
-  const onCreateLi = () => {
-    return menuList.map((item) => {
-      return (
-        <li
-          key={item.name}
-          className='relative mr-3 md:mr-4 lg:mr-5 px-[0.5rem] py-[0.5rem] border-2 border-transparent rounded
-          before:absolute before:inset-0 before:opacity-0 before:ease-in before:duration-300 before:-z-49
-          after:absolute after:inset-0 after:top-[100%] after:bg-[#252525] after:ease-in after:duration-300 after:-z-50
-        hover:border-white hover:after:top-0'
-        >
-          <NavLink
-            to={item.path}
-            className='text-lg md:text-xl px-[0.5rem] py-[0.5rem] border-2 border-transparent rounded select-none z-[99]
-             focus:px-[0.5rem] focus:py-[0.5rem]'
-          >
-            {item.name}
-          </NavLink>
-        </li>
-      );
-    });
-  };
+    return token
+  },[token])
 
   return (
     <div>
@@ -75,7 +38,10 @@ function Navbar() {
           <Link to='/'>
             <h1 className='text-2xl cursor-pointer select-none md:text-3xl lg:text-4xl'>Test</h1>
           </Link>
-          <ul className='flex justify-between items-center'>{onCreateLi()}</ul>
+          <div className="flex justify-between items-center">
+            <ul className='flex justify-between items-center'>{OnCreateLi()}</ul>
+            {menuSignout}
+          </div>
         </div>
       </div>
       <Outlet />

@@ -79,7 +79,9 @@ function FormSign({
               onChangeValue(e.target.value, "password")
             }}
           />
-          <ButtonDefault type={"submit"}>{buttonLabel}</ButtonDefault>
+          <div className="flex justify-center mb-[10rem]">
+            <ButtonDefault type={"submit"}>{buttonLabel}</ButtonDefault>
+          </div>
         </form>
       </div>
     </div>

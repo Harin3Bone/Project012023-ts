@@ -5,10 +5,23 @@ import { useLocalStorage } from "react-use"
 type AuthenticationProviderPropsType = {}
 
 function AuthenticationProvider({children}: PropsWithChildren<AuthenticationProviderPropsType>) {
-    const [token] = useLocalStorage<string|undefined>("token")
+  const [token, setToken, removeToken] = useLocalStorage<string|undefined>("token")
+
+  const onSetToken = (param: string) => {
+    setToken(param)
+  }
+
+  const onDeleteToken = () => {
+    removeToken()
+  }
+
   return (
     <Authentication.Provider
-        value={{token:token}}
+        value={{
+          token:token,
+          onSetToken: onSetToken,
+          onDeleteToken: onDeleteToken
+        }}
     >
         {children}
     </Authentication.Provider>

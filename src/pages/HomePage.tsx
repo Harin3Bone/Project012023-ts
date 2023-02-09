@@ -1,7 +1,8 @@
+import theme from "style/them"
+
 function HomePage() {
-  const setStyle = "px-[7.5%] py-[5%] lg:py-[2.5%]"
   return (
-    <div className={`${setStyle}`}>
+    <div className={`${theme.setPage}`}>
       HomePage
     </div>
   )
