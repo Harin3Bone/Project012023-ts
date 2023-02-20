@@ -18,7 +18,7 @@ function PrivateRoute({}:PrivateRoutePropsType) {
   //useEffect
   useEffect(() => {
     if(!token){
-      navigate('/signin')
+      navigate('/sign-in')
     }
   }, [token])
   

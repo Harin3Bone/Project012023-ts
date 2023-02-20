@@ -14,11 +14,11 @@ const fullMenuList = [
   },
   {
     name: "sign in",
-    path: "/signin",
+    path: "/sign-in",
   },
   {
     name: "sign up",
-    path: "/signup",
+    path: "/sign-up",
   },
 ];
 

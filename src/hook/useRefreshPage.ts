@@ -11,13 +11,13 @@ function useRefreshPage() {
   const navigate = useNavigate();
 
   function useGoHome() {
-    navigate("/")
+    navigate("/");
   }
-  
+
   function useRefreshUnAuthenticatedPage() {
     useEffect(() => {
-      if (token) {
-        navigate("/");
+      if (!!token) {
+        navigate("/")
       }
       return () => {};
     }, [token]);
@@ -26,8 +26,8 @@ function useRefreshPage() {
   function useRefreshAuthenticationPage() {
     useEffect(() => {
       navigate(0);
-      if (!token) {
-        navigate("/signin");
+      if (!!token) {
+        navigate("/sign-in");
       }
       return () => {};
     }, [token]);

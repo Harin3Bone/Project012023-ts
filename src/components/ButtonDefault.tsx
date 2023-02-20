@@ -6,8 +6,9 @@ function ButtonDefault({ children, ...props }: ButtonDefaultPropTypes) {
   return (
     <button
       {...props}
-      className='w-[6rem] h-[2rem] rounded-2xl outline-2 outline-black mx-auto pb-10
-    hover:bg-black hover:text-white hover:drop-shadow-2xl hover:translate-y-[-1px] active:translate-y-0 sm:text-2xl lg:text-3xl'
+      className='flex items-center justify-center w-24 h-8 rounded-full mx-auto py-5 outline-1 outline-black
+    hover:bg-black hover:text-white hover:drop-shadow-2xl hover:translate-y-[-1px] active:translate-y-0 
+      text-lg sm:text-2xl lg:text-3xl'
     >
       {children}
     </button>

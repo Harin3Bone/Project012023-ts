@@ -1,7 +1,6 @@
 import { useId } from "react";
 
 //components
-import { informationFormType } from "hook/useUserAuth";
 import InputDefault from "components/InputDefault";
 import ButtonDefault from "components/ButtonDefault";
 
@@ -33,7 +32,7 @@ function FormSign({
 
   return (
     <div
-      className='h-[36rem] lg:h-[40rem] mx-[10%] sm:mx-[15%] md:mx-[10%] mt-[15%] sm:mt-[8%] lg:mt-[5%] border-4 rounded-2xl bg-black 
+      className='h-[36rem] lg:h-[40rem] mx-[10%] sm:mx-[15%] md:mx-[15%] my-[25%] sm:my-[20%] md:my-[15%] lg:my-[7.5%] border-4 rounded-2xl bg-black 
     drop-shadow-2xl overflow-hidden'
     >
       <img

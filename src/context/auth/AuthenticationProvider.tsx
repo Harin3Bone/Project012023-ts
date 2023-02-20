@@ -1,6 +1,7 @@
-import { PropsWithChildren } from "react"
-import { Authentication } from "./authenticateContext"
+import { useState, PropsWithChildren } from "react"
 import { useLocalStorage } from "react-use"
+
+import { Authentication } from "./authenticateContext"
 
 type AuthenticationProviderPropsType = {}
 
@@ -23,7 +24,7 @@ function AuthenticationProvider({children}: PropsWithChildren<AuthenticationProv
           onDeleteToken: onDeleteToken
         }}
     >
-        {children}
+      {children}
     </Authentication.Provider>
   )
 }
