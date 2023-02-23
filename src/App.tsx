@@ -14,7 +14,7 @@ import TestPage from "pages/TestPage";
 import ErrorPage from "pages/ErrorPage";
 
 //Components
-import Navbar from "components/Navbar";
+import Navbar from "components/Navbar/Navbar";
 import PrivateRoute from "components/PrivateRoute";
 
 //toast

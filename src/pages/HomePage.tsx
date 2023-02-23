@@ -2,7 +2,7 @@ import theme from "style/them"
 
 function HomePage() {
   return (
-    <div className={`${theme.setPage}`}>
+    <div className={`${theme.setPage} `}>
       HomePage
     </div>
   )

@@ -10,31 +10,26 @@ function useRefreshPage() {
   //useNavigate
   const navigate = useNavigate();
 
-  function useGoHome() {
-    navigate("/");
-  }
-
   function useRefreshUnAuthenticatedPage() {
     useEffect(() => {
       if (!!token) {
         navigate("/")
       }
-      return () => {};
+      return ()=>{}
     }, [token]);
   }
 
   function useRefreshAuthenticationPage() {
-    useEffect(() => {
-      navigate(0);
-      if (!!token) {
-        navigate("/sign-in");
+      navigate(0) 
+      useEffect(() => { 
+      if (!token) {
+        navigate("/sign-in")
       }
-      return () => {};
+      return ()=>{}
     }, [token]);
   }
 
   return {
-    useGoHome,
     useRefreshUnAuthenticatedPage,
     useRefreshAuthenticationPage,
   };

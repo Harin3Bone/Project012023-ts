@@ -7,6 +7,11 @@ import useAuthenticationContext from "hook/useAuthenticationContext";
 //style
 import theme from "style/them";
 
+//type
+type OnCreateLiPropTypes = {
+  showStyleState: boolean;
+};
+
 const fullMenuList = [
   {
     name: "about",
@@ -24,7 +29,7 @@ const fullMenuList = [
 
 const pathForToken = ["/about"];
 
-function OnCreateLi() {
+function OnCreateLi({ showStyleState }: OnCreateLiPropTypes) {
   const { token } = useAuthenticationContext();
 
   //useMemo
@@ -47,11 +52,11 @@ function OnCreateLi() {
       return (
         <li
           key={item.name}
-          className={`${theme.setStyleMenuUi.setContainerButton}`}
+          className={showStyleState ? theme.setStyleMenuUi.setContainerButton : undefined}
         >
           <NavLink
             to={item.path}
-            className={`${theme.setStyleMenuUi.setStyleButton}`}
+            className={showStyleState ? theme.setStyleMenuUi.setStyleButton : undefined}
           >
             {item.name}
           </NavLink>

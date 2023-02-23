@@ -1,10 +1,9 @@
+import { useNavigate } from "react-router-dom";
+
 import ButtonDefault from "components/ButtonDefault";
 
-//hook
-import useRefreshPage from "hook/useRefreshPage";
-
 function ErrorPage() {
-  const {useGoHome} = useRefreshPage()
+  const navigate = useNavigate();
   return (
     <div className='flex justify-center items-center h-screen overflow-hidden'>
       <div className='flex flex-col justify-center items-center
@@ -16,7 +15,7 @@ function ErrorPage() {
           </p>
         </div>
         <div className='mt-4'>
-          <ButtonDefault onClick={()=>useGoHome()}>home</ButtonDefault>
+          <ButtonDefault onClick={()=>navigate("/")}>home</ButtonDefault>
         </div>
       </div>
     </div>

@@ -106,7 +106,7 @@ export default useUserAuth;
 //window.location.reload();
 //navigate(0)
 
-//useState ทำงานแบบ Asynchronous function
+//useState ทำงานแบบ Asynchronous function *useState ปกติก็ทำ
  //ตัวอย่างที่ 1
   // const onUpdateConfirmationEmail = () => {
   //   setConfirmationEmail((p)=>!p)
