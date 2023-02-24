@@ -2,12 +2,10 @@
 import theme from "style/them"
 
 //hook
-import useRefreshPage from "hook/useRefreshPage";
+import useRefreshAuthenticationPage from "hook/useRefreshPage/useRefreshAuthenticationPage";
 
 function AboutPage() {
   //hook
-  const {useRefreshAuthenticationPage} = useRefreshPage();
-
   useRefreshAuthenticationPage()
 
   return (

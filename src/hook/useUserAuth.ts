@@ -63,14 +63,13 @@ function useUserAuth() {
         onSetToken(data.jwt);
         onUpdateIsOpen();
         toast.success(`successfully connected ${dummy}`, toastSuccess);
-        navigate("/");
       } else {
         onUpdateIsOpen();
         toast.error(errorMessage, toastError);
-        // console.log('Please enter the correct email and password.');
       }
     }
     if (parameter.Form === "SignUp") {
+      onUpdateIsOpen();
       const [data, errorMessage] = await onSingUp({
         email: parameter.email,
         password: parameter.password,
@@ -83,7 +82,6 @@ function useUserAuth() {
       } else {
         onUpdateIsOpen();
         toast.error(errorMessage, toastError);
-        // console.log('Please enter the correct email and password.');
       }
     }
   }

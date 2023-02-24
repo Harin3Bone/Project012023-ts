@@ -47,22 +47,25 @@ function OnCreateLi({ showStyleState }: OnCreateLiPropTypes) {
   }, [token]);
 
   return (
-    menuList &&
-    menuList.map((item) => {
-      return (
-        <li
-          key={item.name}
-          className={showStyleState ? theme.setStyleMenuUi.setContainerButton : undefined}
-        >
-          <NavLink
-            to={item.path}
-            className={showStyleState ? theme.setStyleMenuUi.setStyleButton : undefined}
-          >
-            {item.name}
-          </NavLink>
-        </li>
-      );
-    })
+    <>
+      {menuList &&
+        menuList.map((item) => {
+          return (
+            <li
+              key={item.name}
+              className={showStyleState ? theme.setStyleMenuUi.setContainerButton : undefined}
+            >
+              <NavLink
+                to={item.path}
+                className={showStyleState ? theme.setStyleMenuUi.setStyleButton : undefined}
+              >
+                {item.name}
+              </NavLink>
+            </li>
+          );
+        }
+      )}
+    </>
   );
 }
 

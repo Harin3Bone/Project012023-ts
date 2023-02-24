@@ -3,12 +3,11 @@ import FormSign from "components/FormSign";
 
 //hook
 import useUserAuth from "hook/useUserAuth";
-import useRefreshPage from "hook/useRefreshPage";
+import useRefreshUnAuthenticatedPage from "hook/useRefreshPage/useRefreshUnAuthenticatedPage";
 
 function SignUpPage() {
   //useState hook
   const { informationForm,onHandleChangeInformationForm,onSubmitForm } = useUserAuth();
-  const {useRefreshUnAuthenticatedPage} = useRefreshPage();
   
   useRefreshUnAuthenticatedPage()
 

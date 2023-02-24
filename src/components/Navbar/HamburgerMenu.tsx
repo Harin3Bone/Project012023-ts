@@ -13,7 +13,7 @@ function HamburgerMenu() {
           <span className="span__checkbox"></span>
           <div className="wrapper">
             <ul>
-              {OnCreateLi({showStyleState:false})}
+              <OnCreateLi showStyleState={false}/>
               <li>
                 <ButtonCheckToken showStyleState={false}/>
               </li>

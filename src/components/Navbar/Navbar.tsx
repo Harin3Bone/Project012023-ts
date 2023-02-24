@@ -18,7 +18,9 @@ function Navbar() {
               <h1 className='m-2 text-2xl md:text-3xl lg:text-4xl cursor-pointer select-none '>Test</h1>
             </Link>
           <div className="hidden md:flex justify-between items-center">
-            <ul className='flex justify-between items-center'>{OnCreateLi({showStyleState:true})}</ul>
+            <ul className='flex justify-between items-center'>
+              <OnCreateLi showStyleState={true}/>
+            </ul>
             <ButtonCheckToken showStyleState={true}/>
           </div>
           <HamburgerMenu/>
