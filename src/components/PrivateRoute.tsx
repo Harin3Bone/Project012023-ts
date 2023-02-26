@@ -1,28 +1,27 @@
-import { useEffect } from 'react'
-import { Navigate, Outlet, useNavigate } from 'react-router-dom'
+import { useEffect } from "react";
+import { Navigate, Outlet, useNavigate } from "react-router-dom";
 
-//hook
-import useAuthenticationContext from 'hook/useAuthenticationContext'
+//store
+import useAuthenticationStore from "store/authentication/authentication.store";
 
 //type
-type PrivateRoutePropsType = {}
+type PrivateRoutePropsType = {};
 
-function PrivateRoute({}:PrivateRoutePropsType) {
-  
-  //hook
-  const { token } = useAuthenticationContext()
+function PrivateRoute({}: PrivateRoutePropsType) {
+  //store
+  const jwtToken = useAuthenticationStore((state) => state.jwt);
 
   //useNavigate
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   //useEffect
   useEffect(() => {
-    if(!token){
-      navigate('/sign-in')
+    if (!jwtToken) {
+      navigate("/sign-in");
     }
-  }, [token])
-  
-  return token ? <Outlet /> : <Navigate to={"/"} />
+  }, [jwtToken]);
+
+  return jwtToken ? <Outlet /> : <Navigate to={"/"} />;
 }
 
-export default PrivateRoute
+export default PrivateRoute;

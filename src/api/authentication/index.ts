@@ -8,8 +8,7 @@ import { informationFormType } from "hook/useUserAuth";
 import { APIResponseErrorType, AxiosReturn } from "types/Api.type";
 
 //type
-import { SignInResponseType } from "./SignIn.type";
-import { SignUpResponseType } from "./SignUp.type";
+import { SignInResponseType,SignUpResponseType } from "./authentication.type";
 
 //type
 export interface SingUpParamType {

@@ -5,13 +5,15 @@ import { useLocalStorage } from "react-use";
 //api
 import { onSingIn, onSingUp } from "api/authentication";
 
+//store
+import useAuthenticationStore from "store/authentication/authentication.store";
+
 //hook
-import useAuthenticationContext from "./useAuthenticationContext";
 import { useGlobalLoading } from "./useGlobalLoading";
 
 //toast
-import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { toastSuccess, toastError } from "style/toast";
 
 //type
@@ -25,8 +27,10 @@ export type informationFormClassificationType = {
 } & informationFormType;
 
 function useUserAuth() {
+  //store
+  const { onSetJwt, onRemoveJwt } = useAuthenticationStore();
+
   //hook
-  const { onSetToken, onDeleteToken } = useAuthenticationContext();
   const { onUpdateIsOpen } = useGlobalLoading();
 
   //useNavigate
@@ -60,7 +64,7 @@ function useUserAuth() {
       if (!!data?.jwt && !!data?.user) {
         dummy = data.user?.email;
         // setValue(data.jwt);
-        onSetToken(data.jwt);
+        onSetJwt(data.jwt);
         onUpdateIsOpen();
         toast.success(`successfully connected ${dummy}`, toastSuccess);
       } else {
@@ -87,8 +91,10 @@ function useUserAuth() {
   }
 
   function onSignOut() {
-    onDeleteToken();
-    navigate(0);
+    const status = onRemoveJwt();
+    if (!!status) {
+      navigate("/");
+    }
   }
 
   return {
@@ -105,16 +111,16 @@ export default useUserAuth;
 //navigate(0)
 
 //useState ทำงานแบบ Asynchronous function *useState ปกติก็ทำ
- //ตัวอย่างที่ 1
-  // const onUpdateConfirmationEmail = () => {
-  //   setConfirmationEmail((p)=>!p)
-  //   setConfirmationEmail((p) => {
-  //     console.log(p)
-  //     return p
-  //   });
-  // };
+//ตัวอย่างที่ 1
+// const onUpdateConfirmationEmail = () => {
+//   setConfirmationEmail((p)=>!p)
+//   setConfirmationEmail((p) => {
+//     console.log(p)
+//     return p
+//   });
+// };
 
- //ตัวอย่างที่ 2 
+//ตัวอย่างที่ 2
 // const onUpdateConfirmationEmail = () => {
 //   const effigy = !confirmationEmail
 //   setConfirmationEmail(effigy)

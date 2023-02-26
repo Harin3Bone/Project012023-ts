@@ -1,50 +1,34 @@
 import { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 
-//hook
-import useAuthenticationContext from "hook/useAuthenticationContext";
-
 //style
 import theme from "style/them";
+
+//store
+import useAuthenticationStore from "store/authentication/authentication.store";
+
+//constraint
+import { FULL_MENU_LIST } from "constraint/FULL_MENU_LIST";
 
 //type
 type OnCreateLiPropTypes = {
   showStyleState: boolean;
 };
 
-const fullMenuList = [
-  {
-    name: "about",
-    path: "/about",
-  },
-  {
-    name: "sign in",
-    path: "/sign-in",
-  },
-  {
-    name: "sign up",
-    path: "/sign-up",
-  },
-];
-
-const pathForToken = ["/about"];
-
 function OnCreateLi({ showStyleState }: OnCreateLiPropTypes) {
-  const { token } = useAuthenticationContext();
+  const jwtToken = useAuthenticationStore((state) => state.jwt);
 
   //useMemo
   const menuList = useMemo(() => {
-    if (!token) {
-      return fullMenuList.filter((menu) => {
-        return pathForToken.includes(menu.path) ? null : menu;
-      });
+    if (!!jwtToken) {
+      return FULL_MENU_LIST.filter(
+        (item) => !(item.path === "/sign-in" || item.path === "/sign-up"),
+      );
     }
-    if (token) {
-      return fullMenuList.filter((menu) => {
-        return pathForToken.includes(menu.path) ? menu : null;
-      });
-    } else return fullMenuList;
-  }, [token]);
+    if (!jwtToken) {
+      return FULL_MENU_LIST.filter((item) => !(item.private === true));
+    } else return FULL_MENU_LIST;
+  }, [jwtToken]);
 
   return (
     <>
@@ -63,8 +47,7 @@ function OnCreateLi({ showStyleState }: OnCreateLiPropTypes) {
               </NavLink>
             </li>
           );
-        }
-      )}
+        })}
     </>
   );
 }

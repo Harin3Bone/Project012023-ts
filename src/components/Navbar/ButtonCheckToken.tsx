@@ -1,8 +1,10 @@
 //style
 import theme from 'style/them';
 
+//store
+import useAuthenticationStore from 'store/authentication/authentication.store';
+
 //hook
-import useAuthenticationContext from 'hook/useAuthenticationContext';
 import useUserAuth from 'hook/useUserAuth';
 
 type OnCreateLiPropTypes = {
@@ -11,10 +13,10 @@ type OnCreateLiPropTypes = {
 
 function ButtonCheckToken({showStyleState}:OnCreateLiPropTypes) {
   //hook
-  const { token } = useAuthenticationContext();
+  const jwtToken = useAuthenticationStore();
   const { onSignOut } = useUserAuth()
   
-  return token ? (
+  return jwtToken ? (
     <div className={showStyleState ? theme.setStyleMenuUi.setContainerButton : undefined}>
       <button className={showStyleState ?(theme.setStyleMenuUi.setStyleButton)  : undefined} onClick={() => onSignOut()}>sign out</button>
     </div>

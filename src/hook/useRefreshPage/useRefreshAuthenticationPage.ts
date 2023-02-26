@@ -1,22 +1,22 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-//hook
-import useAuthenticationContext from "../useAuthenticationContext";
+//store
+import useAuthenticationStore from "store/authentication/authentication.store";
 
 function useRefreshAuthenticationPage() {
-  const { token } = useAuthenticationContext();
+  const jwtToken = useAuthenticationStore((state) => state.jwt);
 
   //useNavigate
   const navigate = useNavigate();
 
-  navigate(0) 
-  useEffect(() => { 
-  if (!token) {
-    navigate("/sign-in")
-  }
-    return ()=>{}
-  }, [token]);
+  navigate(0);
+  useEffect(() => {
+    if (!jwtToken) {
+      navigate("/sign-in");
+    }
+    return () => {};
+  }, [jwtToken]);
 }
 
-export default useRefreshAuthenticationPage
+export default useRefreshAuthenticationPage;

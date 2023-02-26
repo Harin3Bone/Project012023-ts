@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 
 //context
-import AuthenticationProvider from "context/auth/AuthenticationProvider";
 import GlobalLoadingProvider from "context/loading/GlobalLoadingProvider";
 
 //Page
@@ -26,7 +25,6 @@ function App() {
   return (
     <GlobalLoadingProvider>
       <ToastContainer/> 
-      <AuthenticationProvider>
         <Routes>
           <Route path='/' element={<Navbar />}>
             <Route index element={<HomePage />} caseSensitive />
@@ -40,7 +38,6 @@ function App() {
           <Route path='test' element={<TestPage />} caseSensitive />
           <Route path='*' element={<ErrorPage/>} />
         </Routes>
-      </AuthenticationProvider>
     </GlobalLoadingProvider>
   );
 }

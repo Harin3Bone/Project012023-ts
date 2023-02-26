@@ -7,7 +7,12 @@ type FormNotificationPropTypes = {
   onClickButton: () => void;
 };
 
-function FormNotification({ formHeader, formContent, buttonLabel, onClickButton }: FormNotificationPropTypes) {
+function FormNotification({
+  formHeader,
+  formContent,
+  buttonLabel,
+  onClickButton,
+}: FormNotificationPropTypes) {
   return (
     <div className='flex justify-center items-center h-screen'>
       <div className='bg-white mx-8 md:mr-[25%] 2xl:mr-[32%] md:ml-[25%] 2xl:ml-[32%] p-8 md:p-12 border-4 rounded-lg'>
@@ -24,7 +29,3 @@ function FormNotification({ formHeader, formContent, buttonLabel, onClickButton 
 }
 
 export default FormNotification;
-
-//Thank you! Regarding Your Registration
-//We have send you an confirmation email to ... Please confirm your email address to activate your account
-//home
