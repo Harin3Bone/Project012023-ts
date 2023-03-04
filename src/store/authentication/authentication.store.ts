@@ -1,6 +1,8 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
+import { definedStore } from "helpers";
+
 type UseAuthenticationStoreType = {
   jwt: string | null;
   onSetJwt: (param: string) => boolean;
@@ -23,10 +25,7 @@ const useAuthenticationStore = create<UseAuthenticationStoreType>()(
       }),
       { name: "secret" },
     ),
-    {
-      store: "UserAuthenticationStore",
-      enabled: import.meta.env.MODE === "development" ? true : false,
-    },
+    definedStore("useProfileStore"),
   ),
 );
 

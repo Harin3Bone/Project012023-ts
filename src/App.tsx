@@ -19,9 +19,8 @@ import PrivateRoute from "components/PrivateRoute";
 //toast
 import { ToastContainer } from "react-toastify";
 
+
 function App() {
-  // console.log(import.meta.env.VITE_API_URL);
-  
   return (
     <GlobalLoadingProvider>
       <ToastContainer/> 

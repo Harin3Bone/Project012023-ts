@@ -1,26 +1,31 @@
 //style
-import theme from 'style/them';
+import theme from "style/them";
 
 //store
-import useAuthenticationStore from 'store/authentication/authentication.store';
+import useAuthenticationStore from "store/authentication/authentication.store";
 
 //hook
-import useUserAuth from 'hook/useUserAuth';
+import useUserAuth from "hook/useUserAuth";
 
 type OnCreateLiPropTypes = {
   showStyleState: boolean;
 };
 
-function ButtonCheckToken({showStyleState}:OnCreateLiPropTypes) {
+function ButtonCheckToken({ showStyleState }: OnCreateLiPropTypes) {
   //hook
-  const jwtToken = useAuthenticationStore();
-  const { onSignOut } = useUserAuth()
-  
+  const jwtToken = useAuthenticationStore((state) => state.jwt);
+  const { onSignOut } = useUserAuth();
+
   return jwtToken ? (
     <div className={showStyleState ? theme.setStyleMenuUi.setContainerButton : undefined}>
-      <button className={showStyleState ?(theme.setStyleMenuUi.setStyleButton)  : undefined} onClick={() => onSignOut()}>sign out</button>
+      <button
+        className={showStyleState ? theme.setStyleMenuUi.setStyleButton : undefined}
+        onClick={() => onSignOut()}
+      >
+        sign out
+      </button>
     </div>
-  ): null
+  ) : null;
 }
 
-export default ButtonCheckToken
+export default ButtonCheckToken;

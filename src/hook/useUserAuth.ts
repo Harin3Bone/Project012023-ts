@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useLocalStorage } from "react-use";
+import { shallow } from "zustand/shallow";
 
 //api
 import { onSingIn, onSingUp } from "api/authentication";
 
 //store
 import useAuthenticationStore from "store/authentication/authentication.store";
+import useProfileStore from "store/profile/profile.store";
 
 //hook
 import { useGlobalLoading } from "./useGlobalLoading";
@@ -29,15 +30,19 @@ export type informationFormClassificationType = {
 function useUserAuth() {
   //store
   const { onSetJwt, onRemoveJwt } = useAuthenticationStore();
+  const { onUpdateUser, onRemoveUser } = useProfileStore(
+    (state) => ({
+      onUpdateUser: state.onUpdateUser,
+      onRemoveUser: state.onRemoveUser,
+    }),
+    shallow,
+  );
 
   //hook
   const { onUpdateIsOpen } = useGlobalLoading();
 
   //useNavigate
   const navigate = useNavigate();
-
-  //useLocalStorage
-  const [, setValue] = useLocalStorage("token");
 
   //useState
   const [informationForm, setInformationForm] = useState<informationFormType>({
@@ -63,8 +68,8 @@ function useUserAuth() {
       });
       if (!!data?.jwt && !!data?.user) {
         dummy = data.user?.email;
-        // setValue(data.jwt);
         onSetJwt(data.jwt);
+        data.user && onUpdateUser(data.user)
         onUpdateIsOpen();
         toast.success(`successfully connected ${dummy}`, toastSuccess);
       } else {
@@ -92,6 +97,7 @@ function useUserAuth() {
 
   function onSignOut() {
     const status = onRemoveJwt();
+    onRemoveUser()
     if (!!status) {
       navigate("/");
     }

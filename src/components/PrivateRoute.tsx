@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { Navigate, Outlet, useNavigate } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 //store
 import useAuthenticationStore from "store/authentication/authentication.store";
@@ -11,17 +10,11 @@ function PrivateRoute({}: PrivateRoutePropsType) {
   //store
   const jwtToken = useAuthenticationStore((state) => state.jwt);
 
-  //useNavigate
-  const navigate = useNavigate();
+  const location = useLocation();
 
-  //useEffect
-  useEffect(() => {
-    if (!jwtToken) {
-      navigate("/sign-in");
-    }
-  }, [jwtToken]);
-
-  return jwtToken ? <Outlet /> : <Navigate to={"/"} />;
+  return jwtToken ? <Outlet /> : <Navigate to={"/sign-in"} state={{ from: location }} replace />;
 }
 
 export default PrivateRoute;
+//replace = การแทนที่
+//state={{from:location}} คือการเก็บค่า from เป็น (location = หน้าที่เข้าก่อนหน้านี้) เมือไม่มี jwtToken หน้าที่ขอ jwtToken จะส่งไปหน้าก่อนหน้านี้

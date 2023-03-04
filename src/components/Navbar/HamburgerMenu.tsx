@@ -14,9 +14,7 @@ function HamburgerMenu() {
           <div className="wrapper">
             <ul>
               <OnCreateLi showStyleState={false}/>
-              <li>
-                <ButtonCheckToken showStyleState={false}/>
-              </li>
+              <ButtonCheckToken showStyleState={false}/>
             </ul>
         </div>
     </label>

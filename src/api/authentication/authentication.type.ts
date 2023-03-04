@@ -1,4 +1,4 @@
-export interface UserType {
+export type UserType = {
   id?: number;
   username?: string;
   email?: string;
@@ -9,13 +9,13 @@ export interface UserType {
   updatedAt?: string;
 }
 
-export interface SignInResponseType {
-  jwt?: string;
+export type SignUpResponseType = {
   user?: UserType;
 }
 
-export interface SignUpResponseType {
-  user?: UserType;
+export type SignInResponseType = {
+  jwt?: string;
+  user?: Required<UserType>;
 }
 
 export type JwtType = {
@@ -23,3 +23,5 @@ export type JwtType = {
   iat: number;
   exp: number;
 };
+
+//Required นำ ? ออก

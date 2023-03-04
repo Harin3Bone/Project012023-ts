@@ -10,12 +10,12 @@ import ButtonDefault from "components/ButtonDefault";
 type FormSignPropTypes = {
   formHeader: string;
   formDescription: string;
-  onSubmit: (email: string, password: string) => void
+  onSubmit: (email: string, password: string) => void;
   emailValue: string;
   passwordValue: string;
-  onChangeValue: (value:string, type:"email"|"password") => void
+  onChangeValue: (value: string, type: "email" | "password") => void;
   buttonLabel: string;
-}
+};
 
 function FormSign({
   formHeader,
@@ -24,7 +24,7 @@ function FormSign({
   emailValue,
   passwordValue,
   onChangeValue,
-  buttonLabel
+  buttonLabel,
 }: FormSignPropTypes) {
   //useId
   const inputEmailId = useId();
@@ -48,10 +48,11 @@ function FormSign({
           <p className='text-3xl mb-[1rem] sm:mt-[2rem] lg:text-4xl cursor-pointer'>{formHeader}</p>
           <p className='text-xl cursor-pointer lg:text-2xl'>{formDescription}</p>
         </div>
-        <form className='flex justify-center flex-col mt-[3rem]'
-          onSubmit={(e) =>{
-            e.preventDefault()
-            onSubmit(emailValue, passwordValue)
+        <form
+          className='flex justify-center flex-col mt-[3rem]'
+          onSubmit={(e) => {
+            e.preventDefault();
+            onSubmit(emailValue, passwordValue);
           }}
         >
           <InputDefault
@@ -63,7 +64,7 @@ function FormSign({
             minLength={6}
             required
             onChange={(e) => {
-              onChangeValue(e.target.value, "email")
+              onChangeValue(e.target.value, "email");
             }}
           />
           <InputDefault
@@ -75,10 +76,10 @@ function FormSign({
             minLength={6}
             required
             onChange={(e) => {
-              onChangeValue(e.target.value, "password")
+              onChangeValue(e.target.value, "password");
             }}
           />
-          <div className="flex justify-center mb-[10rem]">
+          <div className='flex justify-center mb-[10rem]'>
             <ButtonDefault type={"submit"}>{buttonLabel}</ButtonDefault>
           </div>
         </form>

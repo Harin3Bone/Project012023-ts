@@ -11,13 +11,13 @@ import { APIResponseErrorType, AxiosReturn } from "types/Api.type";
 import { SignInResponseType,SignUpResponseType } from "./authentication.type";
 
 //type
-export interface SingUpParamType {
+export type SingUpParamType = {
   username?: string;
   email?: string;
   password?: string;
 }
 
-export interface SingInParamType {
+export type SingInParamType = {
   identifier?: string;
   password?: string;
 }
