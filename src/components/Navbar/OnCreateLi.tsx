@@ -20,7 +20,7 @@ function OnCreateLi({ showStyleState }: OnCreateLiPropTypes) {
 
   //useMemo
   const menuList = useMemo(() => {
-    if (!!jwtToken) {
+    if (jwtToken) {
       return FULL_MENU_LIST.filter(
         (item) => !(item.path === "/sign-in" || item.path === "/sign-up"),
       );

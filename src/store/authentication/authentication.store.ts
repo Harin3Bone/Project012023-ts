@@ -15,7 +15,7 @@ const useAuthenticationStore = create<UseAuthenticationStoreType>()(
       (set) => ({
         jwt: null,
         onSetJwt: (param: string) => {
-          set({ jwt: param }, false, { type: "onSetJwt" });
+          set({ jwt: param }, false, { type: "onSetJwt" });          
           return true;
         },
         onRemoveJwt: () => {

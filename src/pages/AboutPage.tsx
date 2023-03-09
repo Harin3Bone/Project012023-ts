@@ -4,6 +4,8 @@ import theme from "style/them"
 //hook
 import useRefreshAuthenticationPage from "hook/useRefreshPage/useRefreshAuthenticationPage";
 
+//https://codepen.io/wikyware-net/pen/dyKPRxQ
+
 function AboutPage() {
   //hook
   useRefreshAuthenticationPage()

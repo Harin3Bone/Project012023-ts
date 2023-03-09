@@ -2,21 +2,31 @@ import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { definedStore } from "helpers";
 
+//api
+import { onGetProductStore } from "api/product";
+
 //type
-import { ProductsType } from "./product.type";
+import { ProductsType } from "../../api/product/product.type";
 
 type useProductStoreType = {
   data: ProductsType | null;
-  onUpdateProduct: (products: ProductsType) => ProductsType;
+  error: string | null;
+  getProducts: () => Promise<void>;
 };
 
 const useProductStore = create<useProductStoreType>()(
   devtools(
     (set) => ({
       data: null,
-      onUpdateProduct: (data) => {
-        set({ data }, false, "onUpdateProduct");        
-        return data;
+      error: null,
+      getProducts: async () => {
+        const [data, error] = await onGetProductStore();
+        if (error) {
+          set({ error: error }, false, "getProductsError");
+        }
+        if (data) {
+          set({ data: data }, false, "getProductsSuccessfully");
+        }
       },
     }),
     definedStore("useProductStore"),

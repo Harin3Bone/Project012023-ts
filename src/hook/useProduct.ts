@@ -1,33 +1,45 @@
 import { useEffect } from "react";
-
-//api
-import { getProducts } from "api/products";
+import { shallow } from "zustand/shallow";
 
 //store
 import useProductStore from "store/product/product.store";
 
-//context
+//hook
 import { useGlobalLoading } from "./useGlobalLoading";
 
 function useProduct() {
-  const onUpdateProduct = useProductStore((state) => state.onUpdateProduct);
+  const { products, error, getProducts } = useProductStore(
+    (state) => ({
+      products: state.data,
+      error: state.error,
+      getProducts: state.getProducts,
+    }),
+    shallow,
+  );
 
   const { onUpdateIsOpen } = useGlobalLoading();
 
   useEffect(() => {
-    onUpdateIsOpen();
-    const getProduct = async () => {
-      const [response, errorMessage] = await getProducts();
-      if (!!response) {
-        response && onUpdateProduct(response);      
-        onUpdateIsOpen();
-      } else {
-        console.log(errorMessage);
-        onUpdateIsOpen();
-      }
-    };
-    getProduct();
-  }, []);
+    if (!products) {
+      onUpdateIsOpen();
+      getProducts()
+        .catch((err) => {
+          console.error(err);
+        })
+        .finally(() => {
+          onUpdateIsOpen();
+        });
+    }
+  }, [products, onUpdateIsOpen]);
+
+  function loadProducts() {
+    if (products) {
+      return products;
+    } else {
+      console.error(error);
+    }
+  }
+  return loadProducts();
 }
 
 export default useProduct;

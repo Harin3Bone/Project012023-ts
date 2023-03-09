@@ -66,7 +66,7 @@ function useUserAuth() {
         email: parameter.email,
         password: parameter.password,
       });
-      if (!!data?.jwt && !!data?.user) {
+      if (data?.jwt && data?.user) {
         dummy = data.user?.email;
         onSetJwt(data.jwt);
         data.user && onUpdateUser(data.user)
@@ -83,7 +83,7 @@ function useUserAuth() {
         email: parameter.email,
         password: parameter.password,
       });
-      if (!!data) {
+      if (data) {
         dummy = data.user?.email;
         onUpdateIsOpen();
         toast.success(`successfully connected ${dummy}`, toastSuccess);
@@ -98,7 +98,7 @@ function useUserAuth() {
   function onSignOut() {
     const status = onRemoveJwt();
     onRemoveUser()
-    if (!!status) {
+    if (status) {
       navigate("/");
     }
   }

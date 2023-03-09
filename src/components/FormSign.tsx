@@ -50,8 +50,8 @@ function FormSign({
         </div>
         <form
           className='flex justify-center flex-col mt-[3rem]'
-          onSubmit={(e) => {
-            e.preventDefault();
+          onSubmit={(event) => {
+            event.preventDefault();
             onSubmit(emailValue, passwordValue);
           }}
         >

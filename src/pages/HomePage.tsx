@@ -1,8 +1,5 @@
 //components
-import Store from "components/Store";
-
-//store
-import useProduct from "hook/useProduct";
+import GridProducts from "components/showProducts/GridProducts";
 
 //style
 import theme from "style/them";
@@ -11,9 +8,8 @@ import theme from "style/them";
 //showProducts https://css-tricks.com/practical-css-scroll-snapping/
 
 function HomePage() {
-  useProduct()
   return (
-    <div className=' h-[2000px]'>
+    <div>
       <div className='w-full h-[15.4rem] sm:h-[22.4rem] md:h-[27.4rem] lg:h-[35.4rem] overflow-hidden -z-10'>
         <img
             src='https://images.unsplash.com/photo-1677012817243-d3d91db2e7d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'
@@ -28,7 +24,7 @@ function HomePage() {
         </div>
       </div>
       <div className={`${theme.setPage}`}>
-        <Store/>
+        <GridProducts/>
       </div>
     </div>
   );

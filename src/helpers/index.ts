@@ -1,3 +1,13 @@
+import axios from "axios"
+import { APIResponseErrorType } from "types/Api.type"
+
+export function onHandleErrorFromApi(error:unknown):[null, string] {
+  if(axios.isAxiosError<APIResponseErrorType>(error)){
+    return [null,error.response?.data?.error?.message ?? "Error"]
+  }
+  return [null, (error as Error).message]
+}
+
 export function definedStore(storeName:string) {
   return{
     name: "",
