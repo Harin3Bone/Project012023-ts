@@ -15,6 +15,7 @@ function HomePage() {
             src='https://images.unsplash.com/photo-1677012817243-d3d91db2e7d3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80'
             alt='unsplash_Marek_Piwnicki'
             className='min-w-full h-full sm:h-auto'
+            loading="lazy"
           />
         <div className='absolute inset-0 flex justify-center items-center h-80 sm:h-[27rem] md:h-[32rem] lg:h-[40rem] bg-black/50 overflow-hidden '>
           <div className=" w-1/2 mt-10 text-white cursor-default">

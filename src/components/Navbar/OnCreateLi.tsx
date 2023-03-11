@@ -20,14 +20,9 @@ function OnCreateLi({ showStyleState }: OnCreateLiPropTypes) {
 
   //useMemo
   const menuList = useMemo(() => {
-    if (jwtToken) {
-      return FULL_MENU_LIST.filter(
-        (item) => !(item.path === "/sign-in" || item.path === "/sign-up"),
-      );
-    }
-    if (!jwtToken) {
-      return FULL_MENU_LIST.filter((item) => !(item.private === true));
-    } else return FULL_MENU_LIST;
+    return jwtToken
+      ? FULL_MENU_LIST.filter((item) => !(item.path === "/sign-in" || item.path === "/sign-up"))
+      : FULL_MENU_LIST.filter((item) => !item.private);
   }, [jwtToken]);
 
   return (

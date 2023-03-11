@@ -1,4 +1,5 @@
 import { useId } from "react";
+import { Link } from "react-router-dom";
 
 //components
 import InputDefault from "components/InputDefault";
@@ -30,6 +31,11 @@ function FormSign({
   const inputEmailId = useId();
   const inputPasswordId = useId();
 
+  let statusForm: boolean = false;
+  if (buttonLabel === "Sign in") {
+    statusForm = true;
+  }
+
   return (
     <div
       className='h-[36rem] lg:h-[40rem] mx-[10%] sm:mx-[15%] md:mx-[15%] my-[25%] sm:my-[20%] md:my-[15%] lg:my-[7.5%] border-4 rounded-2xl bg-black 
@@ -38,6 +44,7 @@ function FormSign({
       <img
         className='relative w-full sm:h-full'
         src='https://images.pexels.com/photos/1070345/pexels-photo-1070345.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+        loading="lazy"
       />
       <div
         className='absolute top-[6rem] flex justify-between flex-col w-full 
@@ -79,10 +86,15 @@ function FormSign({
               onChangeValue(e.target.value, "password");
             }}
           />
-          <div className='flex justify-center mb-[10rem]'>
+          <div className='flex justify-center mb-[4rem]'>
             <ButtonDefault type={"submit"}>{buttonLabel}</ButtonDefault>
           </div>
         </form>
+        <div className={"flex items-center justify-end"}>
+          <Link to={statusForm ? "/sign-up" : "/sign-in"}>
+            <span>{statusForm ? "Sign up now" : "Sign In"}</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

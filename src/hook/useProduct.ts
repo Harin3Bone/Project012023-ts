@@ -20,17 +20,10 @@ function useProduct() {
   const { onUpdateIsOpen } = useGlobalLoading();
 
   useEffect(() => {
-    if (!products) {
-      onUpdateIsOpen();
-      getProducts()
-        .catch((err) => {
-          console.error(err);
-        })
-        .finally(() => {
-          onUpdateIsOpen();
-        });
-    }
-  }, [products, onUpdateIsOpen]);
+    onUpdateIsOpen();
+    getProducts();
+    onUpdateIsOpen();
+  }, []);
 
   function loadProducts() {
     if (products) {

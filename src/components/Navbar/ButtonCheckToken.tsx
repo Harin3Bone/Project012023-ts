@@ -8,10 +8,10 @@ import useAuthenticationStore from "store/authentication/authentication.store";
 import useUserAuth from "hook/useUserAuth";
 
 type OnCreateLiPropTypes = {
-  showStyleState: boolean;
+  showStyleState?: boolean;
 };
 
-function ButtonCheckToken({ showStyleState }: OnCreateLiPropTypes) {
+function ButtonCheckToken({ showStyleState = false }: OnCreateLiPropTypes) {
   //hook
   const jwtToken = useAuthenticationStore((state) => state.jwt);
   const { onSignOut } = useUserAuth();
