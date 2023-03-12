@@ -1,17 +1,18 @@
-import React from 'react'
+import { ComponentPropsWithoutRef } from "react";
+//Omit ไม่เอา type ไหนบ้าง
+type ButtonDefaultPropTypes = Omit<ComponentPropsWithoutRef<"button">, "className" | "style">;
 
-type Variable ={
-    text:string
-}
-
-function ButtonDefault(props:Variable) {
-    const {text} = props
+function ButtonDefault({ children, ...props }: ButtonDefaultPropTypes) {
   return (
-    <button className='w-[6rem] h-[2rem] rounded-2xl outline-2 outline-black
-    hover:bg-black hover:text-white hover:drop-shadow-2xl hover:translate-y-[-1px] active:translate-y-0 lg:text-2xl'
-    >{text}
-    </button>     
-  )
+    <button
+      {...props}
+      className='flex items-center justify-center w-24 h-8 rounded-full mx-auto py-5 outline-1 outline-black
+    hover:bg-black hover:text-white hover:drop-shadow-2xl hover:translate-y-[-1px] active:translate-y-0 
+      text-lg sm:text-2xl lg:text-3xl'
+    >
+      {children}
+    </button>
+  );
 }
 
-export default ButtonDefault
+export default ButtonDefault;

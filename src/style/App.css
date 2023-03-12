@@ -1,23 +1,168 @@
-/* InputDefault.jsx */
-.inputA:placeholder-shown ~ .form__label{
-    margin-top: -4.6rem;
-    color: #5e5959;
-         
-}
-.inputA:focus ~ .form__label{
-    margin-top: -5.8rem;
-    transition: 0.2s;
-    color: #111727;
-    cursor: text;       
+/* Loader.tsx */
+.body-scroll-lock {
+  overflow: hidden;
 }
 
-.form__label {
-    position: absolute;
+/* InputDefault.jsx */
+.inputA:placeholder-shown ~ .form__p {
+  margin-top: -4.6rem;
+  color: #5e5959;
+}
+.inputA:focus ~ .form__p {
+  margin-top: -5.8rem;
+  transition: 0.2s;
+  color: #111727;
+  cursor: text;
+}
+
+.form__p {
+  position: absolute;
+  display: block;
+  margin-top: -5.8rem;
+  transition: 0.2s;
+  font-size: 1rem;
+  color: #111727;
+  z-index: 997;
+  user-select: none;
+}
+
+/* Hamburger Menu  */
+.label__checkbox {
+  display: none;
+}
+.wrapper {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .label__checkbox {
+    position: relative;
+    top: 2px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 2.5rem;
+    width: 2.5rem;
+    z-index: 999;
+    cursor: pointer;
+  }
+
+  .label__checkbox .span__checkbox {
+    height: 0.6rem;
+    margin: 2.5px 0;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: 0.4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  }
+
+  .span__checkbox:nth-of-type(1) {
+    height: 6px;
+    width: 40%;
+  }
+  .span__checkbox:nth-of-type(2) {
+    height: 6px;
+    width: 80%;
+  }
+  .span__checkbox:nth-of-type(3) {
+    height: 6px;
+    width: 60%;
+  }
+
+  input[type="checkbox"]:checked ~ .span__checkbox:nth-of-type(1) {
+    transform-origin: bottom;
+    transform: rotateZ(45deg) translate(2px, 3px);
+  }
+  input[type="checkbox"]:checked ~ .span__checkbox:nth-of-type(2) {
+    transform-origin: top;
+    transform: rotateZ(-45deg) translate(-2px, -2.5px);
+  }
+  input[type="checkbox"]:checked ~ .span__checkbox:nth-of-type(3) {
+    transform-origin: bottom;
+    width: 40%;
+    transform: translate(10px, -8px) rotateZ(45deg);
+  }
+
+  .wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
     display: block;
-    margin-top: -5.8rem;
-    transition: 0.2s;
-    font-size: 1rem;
-    color: #111727;
-    z-index: 997;
-    user-select: none;
+    width: 100%;
+    height: 100%;
+    clip-path: circle(25px at calc(100% - 40px) 38px);
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+    cursor: default;
+  }
+  .wrapper ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    list-style: none;
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  input[type="checkbox"]:checked ~ .wrapper {
+    clip-path: circle(75%);
+    background-color: #000;
+  }
+
+  .wrapper ul li {
+    position: relative;
+    margin: 20px 0;
+    padding: 5px 30px;
+    border-radius: 50px;
+    background: #000;
+    text-decoration: none;
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 50px;
+    color: #fff;
+    transition: all 0.3s ease;
+  }
+  .wrapper ul li:after {
+    content: "";
+    position: absolute;
+    left: -2%;
+    top: -5%;
+    width: 104%;
+    height: 110%;
+    border-radius: 50px;
+    background: #fff;
+    transform: scaleY(0);
+    z-index: -1;
+    animation: rotate 1.5s linear infinite;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  .wrapper ul li:hover {
+    color: #fff;
+  }
+  .wrapper ul li:hover:after {
+    transform: scaleY(1);
+  }
+}
+
+/* AboutPage */
+.ag-courses_item {
+  flex-basis: calc(33.33333% - 120px);
+}
+.ag-courses-item_link:hover .ag-courses-item_bg {
+  transform: scale(10);
+}
+
+.ag-courses-item_bg {
+  transition: all 0.5s ease;
+}
+
+.ag-courses-item_date {
+  transition: color 0.5s ease;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_date {
+  text-decoration: none;
+  color: #fff;
 }
