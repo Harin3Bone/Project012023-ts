@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
+// https://flowbite.com/docs/forms/search-input/
+
 type SearchBoxPropsType = {
   onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void;
   inputValue?: string;

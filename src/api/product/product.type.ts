@@ -1,9 +1,9 @@
 export type ProductsType = {
-  data?: Required<Datum[]>;
-  meta?: Meta;
+  data?: Required<ProductDataType[]>;
+  meta?: ProductMetaType;
 }
 
-export type Datum = {
+export type ProductDataType = {
   id?:          number;
   name?:        string;
   desc?:        string;
@@ -14,11 +14,11 @@ export type Datum = {
   updatedAt?:   string;
   publishedAt?: string;
   slug?:        null;
-  img?:         Img;
-  categories?:  Category[];
+  img?:         ProductImgType;
+  categories?:  CategoryType[];
 }
 
-export type Category = {
+export type CategoryType = {
   id?:          number;
   title?:       Desc;
   desc?:        Desc;
@@ -35,14 +35,14 @@ export enum Desc {
   WirelessEarbuds = "Wireless earbuds",
 }
 
-export type Img = {
+export type ProductImgType = {
   id?:                number;
   name?:              string;
   alternativeText?:   null;
   caption?:           null;
   width?:             number;
   height?:            number;
-  formats?:           Formats;
+  formats?:           ProductImageFormatType;
   hash?:              string;
   ext?:               EXT;
   mime?:              MIME;
@@ -60,14 +60,14 @@ export enum EXT {
   Webp = ".webp",
 }
 
-export type Formats = {
-  small?:     Large;
-  thumbnail?: Large;
-  large?:     Large;
-  medium?:    Large;
+export type ProductImageFormatType = {
+  small?:     ProductImageFormatDetailType;
+  thumbnail?: ProductImageFormatDetailType;
+  large?:     ProductImageFormatDetailType;
+  medium?:    ProductImageFormatDetailType;
 }
 
-export type Large = {
+export type ProductImageFormatDetailType = {
   ext?:               EXT;
   url?:               string;
   hash?:              string;
@@ -98,7 +98,7 @@ export enum Provider {
   Cloudinary = "cloudinary",
 }
 
-export type Meta = {
+export type ProductMetaType = {
   pagination?: Pagination;
 }
 

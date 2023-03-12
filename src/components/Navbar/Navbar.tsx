@@ -3,14 +3,15 @@ import { Link, Outlet } from "react-router-dom";
 
 //components
 import OnCreateLi from "./OnCreateLi";
-import ButtonCheckToken from "./ButtonCheckToken";
-import HamburgerMenu from "./HamburgerMenu";
+import ProfileDropdown from "./ProfileDropdown";
 
 //reference https://www.ramotion.com/web-design/?utm_source=drbl&utm_medium=special&utm_campaign=20247474-Education-Website
 
 //จะทำ https://www.ingrid.com/blog/order-confirmation-page
 
 function Navbar() {
+  //store
+
   //useState
   const [scrollY, setScrollY] = useState(window.scrollY || 0);
   const [visible, setVisible] = useState(true);
@@ -47,13 +48,12 @@ function Navbar() {
               Test
             </h1>
           </Link>
-          <div className='hidden md:flex justify-between items-center'>
-            <ul className='flex justify-between items-center'>
+          <div className='flex justify-between items-center'>
+            <ul className='hidden md:flex justify-between items-center'>
               <OnCreateLi showStyleState={true} />
             </ul>
-            <ButtonCheckToken showStyleState={true} />
+            <ProfileDropdown/>
           </div>
-          <HamburgerMenu />
         </div>
       </div>
       <Outlet />
