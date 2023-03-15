@@ -2,17 +2,17 @@ import { useEffect } from "react";
 import { shallow } from "zustand/shallow";
 
 //store
-import useProductStore from "store/product/product.store";
+import useCategoriesStore from "store/categories/categories.store";
 
 //hook
 import { useGlobalLoading } from "./useGlobalLoading";
 
-function useProduct() {
-  const { products, error, getProducts } = useProductStore(
+function useCategories() {
+  const { category, error, getCategories } = useCategoriesStore(
     (state) => ({
-      products: state.data,
+      category: state.data,
       error: state.error,
-      getProducts: state.getProducts,
+      getCategories: state.getCategories,
     }),
     shallow,
   );
@@ -20,23 +20,23 @@ function useProduct() {
   const { onUpdateIsOpen } = useGlobalLoading();
 
   useEffect(() => {
-    onUpdateIsOpen();
-    getProducts();
-    onUpdateIsOpen();
+    onUpdateIsOpen()
+    getCategories();
+    onUpdateIsOpen()
   }, []);
 
-  function loadProducts() {
+  function loadCategories() {
     if (error) {
       console.warn(error);
       return null;
     }
-    if (products) {
-      return products;
+    if (category) {
+      return category;
     }
     // console.warn(error);
     return null;
   }
-  return loadProducts();
+  return loadCategories();
 }
 
-export default useProduct;
+export default useCategories;

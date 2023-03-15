@@ -1,6 +1,6 @@
 export type ProductsType = {
   data?: Required<ProductDataType[]>;
-  meta?: ProductMetaType;
+  meta?: Meta;
 }
 
 export type ProductDataType = {
@@ -13,9 +13,9 @@ export type ProductDataType = {
   createdAt?:   string;
   updatedAt?:   string;
   publishedAt?: string;
-  slug?:        null;
+  slug?:        string;
   img?:         ProductImgType;
-  categories?:  CategoryType[];
+  category?:    CategoryType;
 }
 
 export type CategoryType = {
@@ -98,7 +98,7 @@ export enum Provider {
   Cloudinary = "cloudinary",
 }
 
-export type ProductMetaType = {
+export type Meta = {
   pagination?: Pagination;
 }
 

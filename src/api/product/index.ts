@@ -5,7 +5,7 @@ import { onHandleErrorFromApi } from "helpers";
 import { AxiosReturn } from "types/Api.type";
 import { ProductsType } from "./product.type";
 
-export async function onGetProductStore(): AxiosReturn<ProductsType> {
+export async function onGetProduct(): AxiosReturn<ProductsType> {
   try {
     const response = await client.get<ProductsType>("/products?populate=*");
     return [response.data, null];

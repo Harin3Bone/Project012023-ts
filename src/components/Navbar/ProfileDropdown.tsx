@@ -14,7 +14,6 @@ function ProfileDropdown() {
   const { onSignOut } = useUserAuth();
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
-  // console.log(isDropdownOpen);
 
   return (
     <div className={user ? "block" : "hidden"}>
