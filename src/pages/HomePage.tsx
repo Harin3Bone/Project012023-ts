@@ -1,11 +1,9 @@
 //components
-import GridProducts from "components/showProducts/GridProducts";
+import GridProducts from "components/Products/GridProducts";
 
-//style
-import theme from "style/them";
 
 //reference https://www.pexels.com/
-//showProducts https://css-tricks.com/practical-css-scroll-snapping/
+//Products https://css-tricks.com/practical-css-scroll-snapping/
 
 function HomePage() {
   return (
@@ -24,9 +22,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <div className={`${theme.setPage}`}>
-        <GridProducts/>
-      </div>
+      <GridProducts/>
     </div>
   );
 }

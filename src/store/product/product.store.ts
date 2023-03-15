@@ -3,7 +3,7 @@ import { devtools } from "zustand/middleware";
 import { definedStore } from "helpers";
 
 //api
-import { onGetProductStore } from "api/product";
+import { onGetProduct } from "api/product";
 
 //type
 import { ProductsType } from "../../api/product/product.type";
@@ -20,7 +20,7 @@ const useProductStore = create<useProductStoreType>()(
       data: null,
       error: null,
       getProducts: async () => {
-        const [data, error] = await onGetProductStore();
+        const [data, error] = await onGetProduct();
         if (error) {
           set({ error: error }, false, "getProductsError");
         }
