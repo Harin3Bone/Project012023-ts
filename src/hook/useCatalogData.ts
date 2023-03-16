@@ -48,7 +48,6 @@ function useCatalogData(): UseCatalogDataReturnType {
     if (errorCategories) errors.push(errorCategories);
     if (errors.length > 0) {
       console.warn(...errors);
-      return [null, null];
     }
     if (products && category) {
       return [products, category];
