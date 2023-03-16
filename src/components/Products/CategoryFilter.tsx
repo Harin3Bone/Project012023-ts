@@ -2,12 +2,23 @@ import { CategoriesDataType } from "api/category/categories.type";
 
 type CategoryFilterPropTypes = {
   category: CategoriesDataType[];
-  onCategoryChange: (categoryId: number, isChecked: boolean) => void;
+  onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void;
+  onResetForm: () => void;
+  onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-function CategoryFilter({ category, onCategoryChange }: Partial<CategoryFilterPropTypes>) {
+function CategoryFilter({
+  category,
+  onChangeInput,
+  onResetForm,
+  onSubmitForm,
+}: Partial<CategoryFilterPropTypes>) {
   return (
-    <form className=' w-60 p-4 bg-white rounded-xl shadow-2xl'>
+    <form
+      onSubmit={onSubmitForm}
+      onReset={onResetForm}
+      className=' w-60 p-4 bg-white rounded-xl shadow-2xl'
+    >
       <p className='my-2 text-xl'>Category</p>
       <div className='ml-2'>
         {category &&
@@ -17,13 +28,7 @@ function CategoryFilter({ category, onCategoryChange }: Partial<CategoryFilterPr
                 <input
                   type='checkbox'
                   value={data.id}
-                  onChange={(event) => {
-                    const categoryId = parseInt(event.target.value, 10);
-                    const isChecked = event.target.checked;
-                    if (onCategoryChange) {
-                      onCategoryChange(categoryId, isChecked);
-                    }
-                  }}
+                  onChange={onChangeInput}
                   className='text-lg'
                 />
                 <span className='ml-2 text-lg cursor-pointer'>
