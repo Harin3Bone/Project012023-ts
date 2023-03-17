@@ -1,5 +1,5 @@
 //components
-import GridProducts from "components/Products/GridProducts";
+import GridProducts from "components/products/GridProducts";
 
 
 //reference https://www.pexels.com/
