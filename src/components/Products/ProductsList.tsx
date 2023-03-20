@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // Hooks
-import useCatalogFiltering from "hook/useCatalogFiltering";
+import useCatalogFilter from "hook/useCatalogFilter";
 
 // Components
 import SearchBox from "components/products/SearchBox";
@@ -15,13 +15,15 @@ function ProductsList() {
     products,
     category,
     searchInput,
+    sortOrder,
     filteredProduct,
     handleSearchSubmit,
     handleSearchInputChange,
     handleCategorySubmit,
     handleResetForm,
     handleCategoryInputChange,
-  } = useCatalogFiltering();
+    handleSortOrderChange
+  } = useCatalogFilter()
 
   const [searchParams] = useSearchParams();
 
@@ -33,6 +35,7 @@ function ProductsList() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products?.data && filteredProduct.slice(indexOfFirstItem, indexOfLastItem);
 
+  
   //useEffect
   useEffect(() => {
     const page = parseInt(searchParams.get("page") || "1");
@@ -52,7 +55,12 @@ function ProductsList() {
             onChangeInput={handleSearchInputChange}
           />
           <div className='flex justify-end items-center w-full mt-6'>
-            <select id='sortOrder' className='rounded-md border border-gray-300 px-3 py-2 text-slate-800 text-lg'>
+            <select
+              id='sortOrder'
+              value={sortOrder}
+              onChange={handleSortOrderChange}
+              className='rounded-md border border-gray-300 px-3 py-2 text-slate-800 text-lg'
+            >
               <option value='asc'>{"Product Name (A-Z)"}</option>
               <option value='desc'>{"Product Name (Z-A)"}</option>
             </select>
