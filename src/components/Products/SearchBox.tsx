@@ -11,7 +11,7 @@ type SearchBoxPropsType = {
 
 function SearchBox({ value, onSubmitForm, onChangeInput }: SearchBoxPropsType) {
   return (
-    <form className='w-72 sm:w-1/2' onSubmit={onSubmitForm}>
+    <form className='w-full' onSubmit={onSubmitForm}>
       <label htmlFor='default-search' className='sr-only mb-2 text-sm text-gray-900'>
         Search
       </label>

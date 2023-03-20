@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
+//store
+import useAuthenticationStore from "store/authentication/authentication.store";
+
 //components
 import OnCreateLi from "./OnCreateLi";
 import ProfileDropdown from "./ProfileDropdown";
+import HamburgerMenu from "./HamburgerMenu";
 
 //reference https://www.ramotion.com/web-design/?utm_source=drbl&utm_medium=special&utm_campaign=20247474-Education-Website
 
@@ -11,6 +15,7 @@ import ProfileDropdown from "./ProfileDropdown";
 
 function Navbar() {
   //store
+  const jwtToken = useAuthenticationStore((state) => state.jwt);
 
   //useState
   const [scrollY, setScrollY] = useState(window.scrollY || 0);
@@ -52,7 +57,8 @@ function Navbar() {
             <ul className='hidden md:flex justify-between items-center'>
               <OnCreateLi showStyleState={true} />
             </ul>
-            <ProfileDropdown/>
+            {jwtToken ? <></> : <HamburgerMenu />}
+            <ProfileDropdown />
           </div>
         </div>
       </div>

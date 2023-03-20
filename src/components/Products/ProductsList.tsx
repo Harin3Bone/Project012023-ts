@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 // Hooks
 import useCatalogFiltering from "hook/useCatalogFiltering";
@@ -9,7 +10,7 @@ import CategoryFilter from "./CategoryFilter";
 import Product from "./Product";
 import Pagination from "./Pagination";
 
-function GridProducts() {
+function ProductsList() {
   const {
     products,
     category,
@@ -22,6 +23,8 @@ function GridProducts() {
     handleCategoryInputChange,
   } = useCatalogFiltering();
 
+  const [searchParams] = useSearchParams();
+
   //useState Pagination
   const [currentPage, setCurrentPage] = useState<number>(1);
 
@@ -30,17 +33,31 @@ function GridProducts() {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products?.data && filteredProduct.slice(indexOfFirstItem, indexOfLastItem);
 
+  //useEffect
+  useEffect(() => {
+    const page = parseInt(searchParams.get("page") || "1");
+    setCurrentPage(page);
+  }, [location]);
+
   return (
     <div className='py-[5%] lg:py-[2.5%]'>
-      <div className=' flex justify-center items-center my-12'>
-        <SearchBox
-          value={searchInput}
-          onSubmitForm={(event) => {
-            event.preventDefault();
-            handleSearchSubmit(searchInput);
-          }}
-          onChangeInput={handleSearchInputChange}
-        />
+      <div className='flex justify-center items-center mt-6 mb-3 mx-[5%]'>
+        <div className='flex justify-center items-center flex-col w-full md:w-[506px] lg:w-[674px] xl:w-[920px] 2xl:w-[1000px] md:ml-[15rem] lg:ml-56 xl:ml-48 2xl:ml-20'>
+          <SearchBox
+            value={searchInput}
+            onSubmitForm={(event) => {
+              event.preventDefault();
+              handleSearchSubmit(searchInput);
+            }}
+            onChangeInput={handleSearchInputChange}
+          />
+          <div className='flex justify-end items-center w-full mt-6'>
+            <select id='sortOrder' className='rounded-md border border-gray-300 px-3 py-2 text-slate-800 text-lg'>
+              <option value='asc'>{"Product Name (A-Z)"}</option>
+              <option value='desc'>{"Product Name (Z-A)"}</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div className='flex justify-center flex-row px-[7.5%] md:px-0 md:pr-[7%] md:pl-[3%] 2xl:mr-[5%]'>
         <div className=' hidden md:block mt-10 md:mr-6 2xl:mr-0'>
@@ -81,10 +98,7 @@ function GridProducts() {
   );
 }
 
-export default GridProducts;
-//trim() สำหรับตัดช่องว่างออกไป
-//parseInt(ข้อมูลที่ต้องการจะแปล, แปลงเป็นอะไร เช่น เลขฐาน 2,10,16)
+export default ProductsList;
 //JSON.stringify() เปลี่ยน [] เป็น text ที่สามารถแสดงใน html ได้
 //JSON.parse() เปลี่ยน text เป็น []
 //<pre><code>{JSON.stringify(...)}<code><pre> การแสดงข้อมูล[]
-//w-[546px] w-[652px] w-[640px] w-[860px]

@@ -1,5 +1,5 @@
 //components
-import GridProducts from "components/products/GridProducts";
+import ProductsList from "components/products/ProductsList";
 
 
 //reference https://www.pexels.com/
@@ -22,7 +22,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      <GridProducts/>
+      <ProductsList/>
     </div>
   );
 }

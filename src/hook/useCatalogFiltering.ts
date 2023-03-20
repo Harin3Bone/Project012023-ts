@@ -9,6 +9,9 @@ function useCatalogFiltering() {
 
   const { onUpdateIsOpen } = useGlobalLoading();
 
+  //SortOrder useState
+  const [sortOrder, setSortOrder] = useState<string>("asc");
+
   //SearchBox useState
   const [searchInput, setSearchInput] = useState<string>("");
   const [searchText, setSearchText] = useState<string>("");
@@ -32,7 +35,7 @@ function useCatalogFiltering() {
   );
 
   //useCallback
-  //SearchBox
+    //SearchBox
   const handleSearchSubmit = useCallback(
     (text: string) => {
       onUpdateIsOpen();
@@ -50,7 +53,7 @@ function useCatalogFiltering() {
     setSearchInput(event.target.value);
   }, []);
 
-  //CategoryFilter
+    //CategoryFilter
   const onHandleCategorySelection = useCallback((categoryId: number, isChecked: boolean) => {
     setUnconfirmedCategories((prevState) =>
       isChecked ? [...prevState, categoryId] : prevState.filter((id) => id !== categoryId),
@@ -94,3 +97,5 @@ function useCatalogFiltering() {
 }
 
 export default useCatalogFiltering;
+//trim() สำหรับตัดช่องว่างออกไป
+//parseInt(ข้อมูลที่ต้องการจะแปล, แปลงเป็นอะไร เช่น เลขฐาน 2,10,16)
