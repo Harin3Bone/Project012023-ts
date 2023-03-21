@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useSearchParams } from "react-router-dom";
 
 // Hooks
@@ -22,25 +22,29 @@ function ProductsList() {
     handleCategorySubmit,
     handleResetForm,
     handleCategoryInputChange,
-    handleSortOrderChange
-  } = useCatalogFilter()
+    handleSortOrderChange,
+  } = useCatalogFilter();
 
   const [searchParams] = useSearchParams();
 
   //useState Pagination
   const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(8)
 
-  const itemsPerPage = 12;
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = products?.data && filteredProduct.slice(indexOfFirstItem, indexOfLastItem);
 
-  
   //useEffect
   useEffect(() => {
     const page = parseInt(searchParams.get("page") || "1");
     setCurrentPage(page);
   }, [location]);
+
+  //useCallback
+  const handlePerPageChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemsPerPage(parseInt(event.target.value));
+  }, []);
 
   return (
     <div className='py-[5%] lg:py-[2.5%]'>
@@ -56,13 +60,25 @@ function ProductsList() {
           />
           <div className='flex justify-end items-center w-full mt-6'>
             <select
+              id='itemsPerPage'
+              value={itemsPerPage}
+              onChange={handlePerPageChange}
+              className='hidden sm:block w-52 rounded-md border border-gray-300 mr-2 px-3 py-2 text-slate-800 text-lg'
+            >
+              <option value='8'>PerPage: 8</option>
+              <option value='12'>PerPage: 12</option>
+              <option value='24'>PerPage: 24</option>
+            </select>
+            <select
               id='sortOrder'
               value={sortOrder}
               onChange={handleSortOrderChange}
-              className='rounded-md border border-gray-300 px-3 py-2 text-slate-800 text-lg'
+              className='w-52 rounded-md border border-gray-300 px-3 py-2 text-slate-800 text-lg'
             >
               <option value='asc'>{"Product Name (A-Z)"}</option>
               <option value='desc'>{"Product Name (Z-A)"}</option>
+              <option value='price_asc'>{"Price (Low to High)"}</option>
+              <option value='price_desc'>{"Price (High to Low)"}</option>
             </select>
           </div>
         </div>

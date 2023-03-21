@@ -36,10 +36,17 @@ function useCatalogFilter() {
     const sortedProducts = filtered.sort((a, b) => {
       const nameA = a.name || "";
       const nameB = b.name || "";
+      const priceA = a.price || 0;
+      const priceB = b.price || 0;
+
       if (sortOrder === "asc") {
         return nameA.localeCompare(nameB);
       } else if (sortOrder === "desc") {
         return nameB.localeCompare(nameA);
+      } else if (sortOrder === "price_asc") {
+        return priceA - priceB;
+      } else if (sortOrder === "price_desc") {
+        return priceB - priceA;
       }
       return 0;
     });
@@ -116,6 +123,11 @@ function useCatalogFilter() {
 }
 
 export default useCatalogFilter;
-//.sort() สำหรับเรียงลำดับทั้ง number และ string ถ้าเป็น string ตามเงื่อนไขด้านบน
+//.sort() สำหรับเรียงลำดับทั้ง number และ string
+//.sort() การใช้งานกับ number ถ้าเป็นการใช้แบบปกติจะเรียงลำดับตามค่า Unicode ซึ่งอาจทำให้การเรียงลำดับไม่ถูกต้องตามค่าตัวเลข เช่น const numberArray = [10, 5, 8, 1, 7] numberArray.sort() Output: [1, 10, 5, 7, 8]
+//แต่ .sort((a, b) => a.localeCompare(b)) เพื่อเปรียบเทียบข้อมูลตัวเลข ซึ่งจะทำให้ข้อมูลถูกเรียงลำดับจากน้อยไปหามากอย่างถูกต้องตามค่าตัวเลข numberArray.sort((a, b) => a - b) Output: [1, 5, 7, 8, 10]
+//.sort() การใช้งานกับ string ถ้าเป็นการใช้แบบปกติจะเรียงลำดับตามค่า Unicode ของข้อมูลการเรียงลำดับนี้อาจไม่ตรงในบางกรณี 
+//แต่ .sort((a, b) => a.localeCompare(b)) การใช้แบบนี้จะเรียงลำดับถูกต้องตามภาษาท้องถิ่น ซึ่งอาจต่างจากการเรียงลำดับตามค่า Unicode
+
 //trim() สำหรับตัดช่องว่างออกไป
 //parseInt(ข้อมูลที่ต้องการจะแปล, แปลงเป็นอะไร เช่น เลขฐาน 2,10,16)
