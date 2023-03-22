@@ -1,8 +1,5 @@
-import { useState, useEffect, useCallback } from "react";
-import { useSearchParams } from "react-router-dom";
-
-// Hooks
-import useCatalogFilter from "hook/useCatalogFilter";
+//hook
+import useManageProductList from "hook/useCatalog/useManageProductList";
 
 // Components
 import SearchBox from "components/products/SearchBox";
@@ -12,39 +9,22 @@ import Pagination from "./Pagination";
 
 function ProductsList() {
   const {
-    products,
-    category,
-    searchInput,
     sortOrder,
-    filteredProduct,
+    searchInput,
     handleSearchSubmit,
     handleSearchInputChange,
     handleCategorySubmit,
     handleResetForm,
     handleCategoryInputChange,
     handleSortOrderChange,
-  } = useCatalogFilter();
-
-  const [searchParams] = useSearchParams();
-
-  //useState Pagination
-  const [currentPage, setCurrentPage] = useState<number>(1);
-  const [itemsPerPage, setItemsPerPage] = useState<number>(8)
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = products?.data && filteredProduct.slice(indexOfFirstItem, indexOfLastItem);
-
-  //useEffect
-  useEffect(() => {
-    const page = parseInt(searchParams.get("page") || "1");
-    setCurrentPage(page);
-  }, [location]);
-
-  //useCallback
-  const handlePerPageChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
-    setItemsPerPage(parseInt(event.target.value));
-  }, []);
+    currentPage,
+    itemsPerPage,
+    currentItems,
+    handlePerPageChange,
+    dataCategoryFilter,
+    totalItemsPagination,
+    onPageChangePagination,
+  } = useManageProductList();
 
   return (
     <div className='py-[5%] lg:py-[2.5%]'>
@@ -52,10 +32,7 @@ function ProductsList() {
         <div className='flex justify-center items-center flex-col w-full md:w-[506px] lg:w-[674px] xl:w-[920px] 2xl:w-[1000px] md:ml-[15rem] lg:ml-56 xl:ml-48 2xl:ml-20'>
           <SearchBox
             value={searchInput}
-            onSubmitForm={(event) => {
-              event.preventDefault();
-              handleSearchSubmit(searchInput);
-            }}
+            onSubmitForm={handleSearchSubmit}
             onChangeInput={handleSearchInputChange}
           />
           <div className='flex justify-end items-center w-full mt-6'>
@@ -86,11 +63,8 @@ function ProductsList() {
       <div className='flex justify-center flex-row px-[7.5%] md:px-0 md:pr-[7%] md:pl-[3%] 2xl:mr-[5%]'>
         <div className=' hidden md:block mt-10 md:mr-6 2xl:mr-0'>
           <CategoryFilter
-            category={category?.data}
-            onSubmitForm={(event) => {
-              event.preventDefault();
-              handleCategorySubmit();
-            }}
+            category={dataCategoryFilter}
+            onSubmitForm={handleCategorySubmit}
             onResetForm={handleResetForm}
             onChangeInput={handleCategoryInputChange}
           />
@@ -114,9 +88,9 @@ function ProductsList() {
       </div>
       <Pagination
         itemsPerPage={itemsPerPage}
-        totalItems={filteredProduct.length}
+        totalItems={totalItemsPagination}
         currentPage={currentPage}
-        onPageChange={(pageNumber: number) => setCurrentPage(pageNumber)}
+        onPageChange={onPageChangePagination}
       />
     </div>
   );

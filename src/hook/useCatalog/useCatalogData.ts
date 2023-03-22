@@ -6,7 +6,7 @@ import useProductStore from "store/product/product.store";
 import useCategoriesStore from "store/categories/categories.store";
 
 //hook
-import { useGlobalLoading } from "./useGlobalLoading";
+import { useGlobalLoading } from "../useGlobalLoading";
 
 //type
 import { ProductsType } from "api/product/product.type";
