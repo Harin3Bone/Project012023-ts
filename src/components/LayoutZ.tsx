@@ -6,7 +6,8 @@ import useAuthenticationStore from "store/authentication/authentication.store";
 
 //components
 import Footer from "./Footer";
-import HamburgerMenu from "./navbar/HamburgerMenu";
+import OnCreateLi from "./navbar/OnCreateLi";
+// import HamburgerMenu from "./navbar/HamburgerMenu";
 // import ProfileDropdown from "./navbar/ProfileDropdown";
 
 //reference https://www.ramotion.com/web-design/?utm_source=drbl&utm_medium=special&utm_campaign=20247474-Education-Website
@@ -26,10 +27,10 @@ function LayoutZ() {
           </Link>
           <div className='flex justify-between items-center'>
             <ul className='hidden md:flex justify-between items-center'>
-              {/* <OnCreateLi showStyleState={true} /> */}
+              <OnCreateLi showStyleState={true} />
             </ul>
-            {jwtToken ? <></> : <HamburgerMenu />}
-            {/* <ProfileDropdown /> */}
+            {/* {jwtToken ? <></> : <HamburgerMenu />} error */}
+            {/* <ProfileDropdown /> error*/}
           </div>
         </div>
       <div className='flex-grow'>
