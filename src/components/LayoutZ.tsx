@@ -17,7 +17,7 @@ function LayoutZ() {
 
   return (
     <div  className='flex flex-col min-h-[100vh]'>
-      <ProfileDropdown />
+      {/* <ProfileDropdown /> error */}
       <div className='flex-grow'>
         <Outlet />
       </div>
