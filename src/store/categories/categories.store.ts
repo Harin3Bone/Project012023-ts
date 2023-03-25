@@ -6,7 +6,7 @@ import { definedStore } from "helpers";
 import { onGetCategories } from "api/category";
 
 //type
-import { CategoriesType } from "../../api/category/categories.type";
+import { CategoriesType } from "api/category/categories.type";
 
 type useCategoriesStoreType = {
   data: CategoriesType | null;
