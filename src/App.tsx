@@ -19,7 +19,6 @@ import TestPage from "pages/TestPage";
 import ErrorPage from "pages/ErrorPage";
 
 //Components
-// import Layout from "components/Layout";
 import LayoutZ from "components/LayoutZ";
 import PrivateRoute from "components/PrivateRoute";
 
