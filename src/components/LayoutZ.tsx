@@ -7,7 +7,7 @@ import useAuthenticationStore from "store/authentication/authentication.store";
 //components
 // import OnCreateLi from "./navbar/OnCreateLi";
 // import HamburgerMenu from "./navbar/HamburgerMenu";
-// import ProfileDropdown from "./navbar/ProfileDropdown";
+import ProfileDropdown from "./navbar/ProfileDropdown";
 import Footer from "components/Footer";
 
 //reference https://www.ramotion.com/web-design/?utm_source=drbl&utm_medium=special&utm_campaign=20247474-Education-Website
@@ -57,8 +57,8 @@ function Layout() {
             <ul className='hidden md:flex justify-between items-center'>
               {/* <OnCreateLi showStyleState={true} /> */}
             </ul>
-            {/* {jwtToken ? <></> : <HamburgerMenu />}
-            <ProfileDropdown /> */}
+            {/* {jwtToken ? <></> : <HamburgerMenu />} */}
+            <ProfileDropdown/>
           </div>
         </div>
       </div>
