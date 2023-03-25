@@ -1,8 +1,9 @@
-import client from "config/axiosConfig";
-import { AxiosReturn } from "types/Api.type";
-import { onHandleErrorFromApi } from "helpers";
+import client from "src/config/axiosConfig";
+import { AxiosReturn } from "src/types/Api.type";
 
-import { ProfileType } from "store/profile/profile.type";
+import { onHandleErrorFromApi } from "src/helpers";
+
+import { ProfileType } from "src/store/profile/profile.type";
 
 export async function onGetProfileWithUserId(): AxiosReturn<ProfileType> {
   try {
