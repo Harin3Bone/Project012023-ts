@@ -1,17 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-//store
+// //store
 import useAuthenticationStore from "store/authentication/authentication.store";
 
-//components
-import OnCreateLi from "./OnCreateLi";
-import ProfileDropdown from "./ProfileDropdown";
-import HamburgerMenu from "./HamburgerMenu";
-import Footer from "components/Footer";
+// //components
+// import OnCreateLi from "./OnCreateLi";
+// import ProfileDropdown from "./ProfileDropdown";
+// import HamburgerMenu from "./HamburgerMenu";
+// import Footer from "components/Footer";
 
 //reference https://www.ramotion.com/web-design/?utm_source=drbl&utm_medium=special&utm_campaign=20247474-Education-Website
-
 //จะทำ https://www.ingrid.com/blog/order-confirmation-page
 
 function Navbar() {
@@ -56,17 +55,17 @@ function Navbar() {
           </Link>
           <div className='flex justify-between items-center'>
             <ul className='hidden md:flex justify-between items-center'>
-              <OnCreateLi showStyleState={true} />
+              {/* <OnCreateLi showStyleState={true} /> */}
             </ul>
-            {jwtToken ? <></> : <HamburgerMenu />}
-            <ProfileDropdown />
+            {/* {jwtToken ? <></> : <HamburgerMenu />} */}
+            {/* <ProfileDropdown /> */}
           </div>
         </div>
       </div>
       <div className='flex-grow'>
         <Outlet />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
