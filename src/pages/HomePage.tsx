@@ -1,5 +1,5 @@
 //components
-import ProductsList from "../components/products/ProductsListX";
+import ProductsList from "../components/products/ProductsList";
 
 
 //reference https://www.pexels.com/
