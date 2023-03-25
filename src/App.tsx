@@ -19,7 +19,7 @@ import TestPage from "pages/TestPage";
 import ErrorPage from "pages/ErrorPage";
 
 //Components
-import Navbar from "./components/navbar/NavbarX";
+import Navbar from "components/navbar/NavbarZ";
 import PrivateRoute from "components/PrivateRoute";
 
 //toast
