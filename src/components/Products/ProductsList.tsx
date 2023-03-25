@@ -2,7 +2,7 @@
 import useManageProductList from "hook/useCatalog/useManageProductList";
 
 // Components
-import SearchBox from "components/products/SearchBox";
+import SearchBox from "./SearchBox";
 import CategoryFilter from "./CategoryFilter";
 import Product from "./Product";
 import Pagination from "./Pagination";
