@@ -31,7 +31,7 @@ function Footer() {
         </div>
         <ul className='flex items-center justify-between mt-4 w-28'>
           <li>
-            <a href='https://github.com/zombox0633' target={"_blank"} rel='noopener noreferrer'>
+            <a href='https://github.com/zombox0633' target="_blank" rel='noopener noreferrer'>
               <FontAwesomeIcon icon={faGithub} size='xl' />
             </a>
           </li>
@@ -53,7 +53,7 @@ function Footer() {
           <li>
             <a
               href='https://www.linkedin.com/in/chayathorn-meesil'
-              target={"_blank"}
+              target="_blank"
               rel='noopener noreferrer'
             >
               <FontAwesomeIcon icon={faLinkedin} size='xl' />
@@ -70,7 +70,7 @@ function Footer() {
 }
 
 export default Footer;
-//rel ในคุณสมบัติของแท็ก <a> เป็นตัวย่อของคำว่า "relationship" หรือ "ความสัมพันธ์"  ใช้ในการระบุความสัมพันธ์ระหว่างหน้าปัจจุบันและหน้าที่ลิงก์นำไป
+//rel ในคุณสมบัติของแท็ก <a> เป็นตัวย่อของคำว่า "relationship" หรือ "ความสัมพันธ์" ใช้ในการระบุความสัมพันธ์ระหว่างหน้าปัจจุบันและหน้าที่ลิงก์นำไป
 //rel="noopener noreferrer
 //noopener คือ คุณสมบัตินี้ป้องกันการเข้าถึงหน้าต้นฉบับผ่าน window.opener จากหน้าที่เปิดในแท็บใหม่ นำไปสู่การป้องกันการโจมตีด้านความปลอดภัยที่เรียกว่า Tabnabbing โดยป้องกันหน้าที่เปิดใหม่จากการ
 //noreferrer สามารถป้องกันปัญหาด้านความปลอดภัยและความเป็นส่วนตัวของผู้ใช้ ทำให้ไม่สามารถระบุได้ว่าผู้ใช้เข้าถึงหน้านั้นมาจากหน้าใด นอกจากนี้ การใช้ noreferrer ยังช่วยป้องกันการเปิดแท็บใหม่จากการเข้าถึง window.opener
