@@ -19,7 +19,7 @@ import TestPage from "./pages/TestPage";
 import ErrorPage from "./pages/ErrorPage";
 
 //Components
-import LayoutZ from "./components/LayoutZ";
+import Layout from "./components/Layout";
 import PrivateRoute from "./components/PrivateRoute";
 
 //toast
@@ -47,7 +47,7 @@ function App() {
     <GlobalLoadingProvider>
       <ToastContainer />
       <Routes>
-        <Route path='/' element={<LayoutZ/>}>
+        <Route path='/' element={<Layout/>}>
           <Route index element={<HomePage />} caseSensitive />
           <Route element={<PrivateRoute />}>
             <Route path='about' element={<AboutPage />} caseSensitive />

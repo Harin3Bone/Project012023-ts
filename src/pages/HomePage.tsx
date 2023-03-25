@@ -1,6 +1,5 @@
 //components
-// import ProductsList from "components/products/ProductsList";
-
+import ProductsList from "components/productlist/ProductsList";
 
 //reference https://www.pexels.com/
 //Products https://css-tricks.com/practical-css-scroll-snapping/
@@ -22,7 +21,7 @@ function HomePage() {
           </div>
         </div>
       </div>
-      {/* <ProductsList/> */}
+      <ProductsList/>
     </div>
   );
 }

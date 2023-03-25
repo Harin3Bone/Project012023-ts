@@ -5,10 +5,10 @@ import { Link, Outlet } from "react-router-dom";
 import useAuthenticationStore from "store/authentication/authentication.store";
 
 //components
-// import OnCreateLi from "./navbar/OnCreateLi";
-// import HamburgerMenu from "./navbar/HamburgerMenu";
-import DropdownProfile from "./navigatebar/DropdownProfile";
 import Footer from "components/Footer";
+import OnCreateLi from "./navigatebar/OnCreateLi";
+import HamburgerMenu from "./navigatebar/HamburgerMenu";
+import DropdownProfile from "./navigatebar/DropdownProfile";
 
 //reference https://www.ramotion.com/web-design/?utm_source=drbl&utm_medium=special&utm_campaign=20247474-Education-Website
 //จะทำ https://www.ingrid.com/blog/order-confirmation-page
@@ -55,10 +55,10 @@ function Layout() {
           </Link>
           <div className='flex justify-between items-center'>
             <ul className='hidden md:flex justify-between items-center'>
-              {/* <OnCreateLi showStyleState={true} /> */}
+              <OnCreateLi showStyleState={true} />
             </ul>
-            {/* {jwtToken ? <></> : <HamburgerMenu />} */}
-            <DropdownProfile/>
+            {jwtToken ? <></> : <HamburgerMenu />}
+            <DropdownProfile />
           </div>
         </div>
       </div>
