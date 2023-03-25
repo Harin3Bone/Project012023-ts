@@ -6,7 +6,7 @@ import { definedStore } from "helpers";
 import { onGetProduct } from "api/product";
 
 //type
-import { ProductsType } from "../../api/product/product.type";
+import { ProductsType } from "api/product/product.type";
 
 type useProductStoreType = {
   data: ProductsType | null;
