@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 
 //store
-import useAuthenticationStore from "store/authentication/authentication.store";
+import useAuthenticationStore from "src/store/authentication/authentication.store";
 
 //type
 type PrivateRoutePropsType = {};

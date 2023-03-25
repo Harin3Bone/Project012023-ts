@@ -2,25 +2,25 @@ import { useEffect, useCallback } from "react";
 import { Routes, Route } from "react-router-dom";
 
 //store
-import useAuthenticationStore from "store/authentication/authentication.store";
-import useProfileStore from "store/profile/profile.store";
+import useAuthenticationStore from "./store/authentication/authentication.store";
+import useProfileStore from "./store/profile/profile.store";
 
 //context
-import GlobalLoadingProvider from "context/loading/GlobalLoadingProvider";
+import GlobalLoadingProvider from "./context/loading/GlobalLoadingProvider";
 
 //Page
-import HomePage from "pages/HomePage";
-import AboutPage from "pages/AboutPage";
-import ProfilePage from "pages/ProfilePage";
-import SignInPage from "pages/SignInPage";
-import SignUpPage from "pages/SignUpPage";
-import ConfirmationEmailPage from "pages/ConfirmationEmailPage";
-import TestPage from "pages/TestPage";
-import ErrorPage from "pages/ErrorPage";
+import HomePage from "./pages/HomePage";
+import AboutPage from "./pages/AboutPage";
+import ProfilePage from "./pages/ProfilePage";
+import SignInPage from "./pages/SignInPage";
+import SignUpPage from "./pages/SignUpPage";
+import ConfirmationEmailPage from "./pages/ConfirmationEmailPage";
+import TestPage from "./pages/TestPage";
+import ErrorPage from "./pages/ErrorPage";
 
 //Components
-import LayoutZ from "components/LayoutZ";
-import PrivateRoute from "components/PrivateRoute";
+import LayoutZ from "./components/LayoutZ";
+import PrivateRoute from "./components/PrivateRoute";
 
 //toast
 import { ToastContainer } from "react-toastify";

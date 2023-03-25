@@ -1,9 +1,12 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { definedStore } from "helpers";
 
-import { onGetProfileWithUserId } from "api/profile";
+import { definedStore } from "src/helpers";
 
+//api
+import { onGetProfileWithUserId } from "src/api/profile";
+
+//type
 import { ProfileType } from "./profile.type";
 
 type UseProfileStoreType = {

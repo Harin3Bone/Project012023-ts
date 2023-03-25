@@ -1,5 +1,5 @@
 import axios from "axios"
-import { APIResponseErrorType } from "types/Api.type"
+import { APIResponseErrorType } from "src/types/Api.type"
 
 export function onHandleErrorFromApi(error:unknown):[null, string] {
   if(axios.isAxiosError<APIResponseErrorType>(error)){

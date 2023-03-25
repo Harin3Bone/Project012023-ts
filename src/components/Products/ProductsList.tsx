@@ -1,5 +1,5 @@
 //hook
-import useManageProductList from "hook/useCatalog/useManageProductList";
+import useManageProductList from "src/hook/useCatalog/useManageProductList";
 
 // Components
 import SearchBox from "./SearchBox";

@@ -1,9 +1,9 @@
 //style
 import "../style/App.css";
-import theme from "style/them";
+import theme from "src/style/them";
 
 //hook
-import useRefreshAuthenticationPage from "hook/useRefreshPage/useRefreshAuthenticationPage";
+import useRefreshAuthenticationPage from "src/hook/useRefreshPage/useRefreshAuthenticationPage";
 
 //https://codepen.io/wikyware-net/pen/dyKPRxQ
 

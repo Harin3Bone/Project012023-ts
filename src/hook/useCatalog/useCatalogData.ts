@@ -2,15 +2,15 @@ import { useEffect } from "react";
 import { shallow } from "zustand/shallow";
 
 //store
-import useProductStore from "store/product/product.store";
-import useCategoriesStore from "store/categories/categories.store";
+import useProductStore from "src/store/product/product.store";
+import useCategoriesStore from "src/store/categories/categories.store";
 
 //hook
 import { useGlobalLoading } from "../useGlobalLoading";
 
 //type
-import { ProductsType } from "api/product/product.type";
-import { CategoriesType } from "api/category/categories.type";
+import { ProductsType } from "src/api/product/product.type";
+import { CategoriesType } from "src/api/category/categories.type";
 
 type UseCatalogDataReturnType = [products: ProductsType | null, category: CategoriesType | null];
 

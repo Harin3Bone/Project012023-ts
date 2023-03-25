@@ -1,11 +1,11 @@
 //style
-import theme from "style/them";
+import theme from "src/style/them";
 
 //store
-import useAuthenticationStore from "store/authentication/authentication.store";
+import useAuthenticationStore from "src/store/authentication/authentication.store";
 
 //hook
-import useUserAuth from "hook/useUserAuth";
+import useUserAuth from "src/hook/useUserAuth";
 
 type OnCreateLiPropTypes = {
   showStyleState?: boolean;

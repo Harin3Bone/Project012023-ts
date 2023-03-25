@@ -3,11 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { shallow } from "zustand/shallow";
 
 //api
-import { onSingIn, onSingUp } from "api/authentication";
+import { onSingIn, onSingUp } from "src/api/authentication";
 
 //store
-import useAuthenticationStore from "store/authentication/authentication.store";
-import useProfileStore from "store/profile/profile.store";
+import useAuthenticationStore from "src/store/authentication/authentication.store";
+import useProfileStore from "src/store/profile/profile.store";
 
 //hook
 import { useGlobalLoading } from "./useGlobalLoading";
@@ -15,7 +15,7 @@ import { useGlobalLoading } from "./useGlobalLoading";
 //toast
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-import { toastSuccess, toastError } from "style/toast";
+import { toastError, toastSuccess } from "src/style/toast";
 
 //type
 export type informationFormType = {

@@ -5,7 +5,7 @@ import { useSearchParams } from "react-router-dom";
 import { useGlobalLoading } from "../useGlobalLoading";
 
 //type
-import { ProductsDataType, ProductsType } from "api/product/product.type";
+import { ProductsDataType, ProductsType } from "src/api/product/product.type";
 
 type usePaginationPropsType = {
   products: ProductsType | null;

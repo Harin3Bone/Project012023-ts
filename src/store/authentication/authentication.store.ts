@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { devtools, persist } from "zustand/middleware";
 
-import { definedStore } from "helpers";
+import { definedStore } from "src/helpers";
 
 type UseAuthenticationStoreType = {
   jwt: string | null;

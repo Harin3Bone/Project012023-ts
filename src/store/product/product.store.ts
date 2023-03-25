@@ -1,12 +1,13 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
-import { definedStore } from "helpers";
+
+import { definedStore } from "src/helpers";
 
 //api
-import { onGetProduct } from "api/product";
+import { onGetProduct } from "src/api/product";
 
 //type
-import { ProductsType } from "api/product/product.type";
+import { ProductsType } from "src/api/product/product.type";
 
 type useProductStoreType = {
   data: ProductsType | null;

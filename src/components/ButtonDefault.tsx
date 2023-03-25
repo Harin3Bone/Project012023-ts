@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from "react";
-//Omit ไม่เอา type ไหนบ้าง
+
 type ButtonDefaultPropTypes = Omit<ComponentPropsWithoutRef<"button">, "className" | "style">;
 
 function ButtonDefault({ children, ...props }: ButtonDefaultPropTypes) {
@@ -16,3 +16,4 @@ function ButtonDefault({ children, ...props }: ButtonDefaultPropTypes) {
 }
 
 export default ButtonDefault;
+//Omit ไม่เอา type ไหนบ้าง
