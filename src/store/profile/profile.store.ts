@@ -1,10 +1,10 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-import { definedStore } from "src/helpers";
+import { definedStore } from "helpers/*";
 
 //api
-import { onGetProfileWithUserId } from "src/api/profile";
+import { onGetProfileWithUserId } from "api/profile";
 
 //type
 import { ProfileType } from "./profile.type";

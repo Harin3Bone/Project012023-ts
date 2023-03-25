@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 //store
-import useAuthenticationStore from "src/store/authentication/authentication.store";
+import useAuthenticationStore from "store/authentication/authentication.store";
 
 //components
 // import OnCreateLi from "./navbar/OnCreateLi";

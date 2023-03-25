@@ -12,16 +12,29 @@
     "module": "ESNext",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl":".",
-    "paths":{
-      "pages/*":["./src/pages/*"],
-      "components/*":["./src/components/*"]
-      
+    "baseUrl": ".",
+    "paths": {
+      "pages/*": ["./src/pages/*"],
+      "components/*": ["./src/components/*"],
+      "context/*": ["./src/context/*"],
+      "assets/*": ["./src/assets/*"],
+      "api/*": ["./src/api/*"],
+      "hook/*": ["./src/hook/*"],
+      "helpers/*":["./src/helpers"],
+      "store/*":["./src/store/*"],
+      "style/*": ["./src/style/*"],
+      "config/*": ["./src/config/*"],
+      "types/*": ["./src/types/*"]
     }
   },
-  "include": ["src", "prettier.config.cjs"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": ["src"],
+  "exclude": ["./auto-imports.d.ts"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }

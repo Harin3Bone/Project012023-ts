@@ -4,7 +4,7 @@ import { useState, useMemo, useCallback } from "react";
 import { useGlobalLoading } from "../useGlobalLoading";
 
 //type
-import { ProductsType } from "src/api/product/product.type";
+import { ProductsType } from "api/product/product.type";
 
 type useFilteredProductPropsType = {
   products: ProductsType | null;

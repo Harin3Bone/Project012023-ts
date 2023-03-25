@@ -2,10 +2,10 @@ import { useMemo } from "react";
 import { NavLink } from "react-router-dom";
 
 //style
-import theme from "src/style/them";
+import theme from "style/them";
 
 //store
-import useAuthenticationStore from "src/store/authentication/authentication.store";
+import useAuthenticationStore from "store/authentication/authentication.store";
 
 //constraint
 import { FULL_MENU_LIST } from "src/constraint/FULL_MENU_LIST";

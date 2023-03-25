@@ -1,7 +1,7 @@
-import client from "src/config/axiosConfig";
-import { AxiosReturn } from "src/types/Api.type";
+import client from "config/axiosConfig";
+import { AxiosReturn } from "types/Api.type";
 
-import { onHandleErrorFromApi } from "src/helpers";
+import { onHandleErrorFromApi } from "helpers/*";
 
 import { ProfileType } from "src/store/profile/profile.type";
 

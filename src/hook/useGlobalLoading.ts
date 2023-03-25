@@ -1,7 +1,7 @@
 import {useContext} from 'react'
 
 //hook
-import { GlobalLoadingContext } from 'src/context/loading/globalLoadingContext'
+import { GlobalLoadingContext } from 'context/loading/globalLoadingContext'
 
  export function useGlobalLoading() {
   const context = useContext(GlobalLoadingContext)

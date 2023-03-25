@@ -1,4 +1,4 @@
-import "../../style/App.css";
+import "style/App.css";
 
 //components
 import OnCreateLi from "./OnCreateLi";

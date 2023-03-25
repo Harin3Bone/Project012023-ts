@@ -1,8 +1,8 @@
 //style
-import theme from "src/style/them";
+import theme from "style/them";
 
 //store
-import useAuthenticationStore from "src/store/authentication/authentication.store";
+import useAuthenticationStore from "store/authentication/authentication.store";
 
 //hook
 import useUserAuth from "src/hook/useUserAuth";

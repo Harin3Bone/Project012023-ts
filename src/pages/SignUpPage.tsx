@@ -1,10 +1,9 @@
 //components
 import FormSign from "components/FormSign";
 
-
 //hook
-import useUserAuth from "src/hook/useUserAuth";
-import useRefreshUnAuthenticatedPage from "src/hook/useRefreshPage/useRefreshUnAuthenticatedPage";
+import useUserAuth from "hook/useUserAuth";
+import useRefreshUnAuthenticatedPage from "hook/useRefreshPage/useRefreshUnAuthenticatedPage";
 
 function SignUpPage() {
   //useState hook

@@ -1,5 +1,5 @@
 import { ComponentPropsWithoutRef } from "react";
-import "../style/App.css";
+import "style/App.css";
 
 type InputDefaultPropTypes = ComponentPropsWithoutRef<"input"> & {
   label: string;

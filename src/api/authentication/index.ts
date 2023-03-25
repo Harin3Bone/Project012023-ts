@@ -1,12 +1,13 @@
 import axios, { AxiosResponse } from "axios";
-import client from "src/config/axiosConfig";
-import { onHandleErrorFromApi } from "src/helpers";
+import client from "config/axiosConfig";
+import { onHandleErrorFromApi } from "helpers/*";
+
 
 //hook
-import { informationFormType } from "src/hook/useUserAuth";
+import { informationFormType } from "hook/useUserAuth";
 
 //Api.type
-import { APIResponseErrorType, AxiosReturn } from "src/types/Api.type";
+import { APIResponseErrorType, AxiosReturn } from "types/Api.type";
 
 //type
 import { SignInResponseType, SignUpResponseType } from "./authentication.type";

@@ -1,4 +1,4 @@
-import { CategoriesDataType } from "src/api/category/categories.type";
+import { CategoriesDataType } from "api/category/categories.type";
 
 type CategoryFilterPropTypes = {
   category: CategoriesDataType[];

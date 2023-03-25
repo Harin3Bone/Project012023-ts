@@ -1,4 +1,4 @@
-import "../style/App.css";
+import "style/App.css";
 
 import Footer from "components/Footer";
 

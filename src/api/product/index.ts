@@ -1,8 +1,8 @@
-import client from "src/config/axiosConfig";
-import { onHandleErrorFromApi } from "src/helpers";
+import client from "config/axiosConfig";
+import { onHandleErrorFromApi } from "helpers/*";
 
 //type
-import { AxiosReturn } from "src/types/Api.type";
+import { AxiosReturn } from "types/Api.type";
 import { ProductsType } from "./product.type";
 
 export async function onGetProduct(): AxiosReturn<ProductsType> {

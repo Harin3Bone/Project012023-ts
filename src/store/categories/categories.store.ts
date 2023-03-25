@@ -1,13 +1,13 @@
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
-import { definedStore } from "src/helpers";
+import { definedStore } from "helpers/*";
 
 //api
-import { onGetCategories } from "src/api/category";
+import { onGetCategories } from "api/category";
 
 //type
-import { CategoriesType } from "src/api/category/categories.type";
+import { CategoriesType } from "api/category/categories.type";
 
 type useCategoriesStoreType = {
   data: CategoriesType | null;
