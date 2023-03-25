@@ -1,7 +1,9 @@
+
 function DropdownProfile() {
   return (
-    <div>DropdownProfile</div>
-  )
+    <div>
+    </div>
+  );
 }
 
-export default DropdownProfile
+export default DropdownProfile;
