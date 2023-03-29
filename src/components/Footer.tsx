@@ -20,7 +20,7 @@ function Footer() {
   };
 
   return (
-    <div className='w-full mt-8 bg-[#121212] text-white'>
+    <div className='w-full bg-[#121212] text-white'>
       <div className='flex justify-center flex-col items-center py-8'>
         <div className='md:w-1/2 lg:w-[34%] text-center mx-4 md:mx-0'>
           <h3 className='py-2 text-3xl'>Test e-commerce</h3>

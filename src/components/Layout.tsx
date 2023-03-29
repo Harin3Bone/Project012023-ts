@@ -37,12 +37,12 @@ function Layout() {
   };
 
   return (
-    <div className='flex flex-col min-h-[100vh]'>
+    <div className='flex flex-col min-h-[100vh] '>
       <div
         className={
           visible
             ? "sticky top-0 inset-x-0 block h-[4.6rem] " +
-              (scrollY > 300 ? "bg-black/95" : "bg-black/80") +
+              (scrollY > 300 ? "bg-black/95" : "bg-black/90") +
               " z-40 duration-500 ease-out "
             : "-top-[101%] ease-in duration-1000 transition-all "
         }

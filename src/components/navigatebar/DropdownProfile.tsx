@@ -32,7 +32,7 @@ function ProfileDropdown() {
               <p className='w-44 text-ellipsis overflow-hidden'>{user?.email}</p>
             </div>
             <NavLink
-              to='profile'
+              to='account'
               className='flex justify-center items-center h-16 border-b-2 border-[#35363a] text-lg select-none hover:bg-[#35363a]/50 focus:outline-2 focus:outline-offset-2'
             >
               Profile

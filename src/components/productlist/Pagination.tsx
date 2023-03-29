@@ -60,7 +60,7 @@ function Pagination({ itemsPerPage, totalItems, currentPage, onPageChange }: Pag
   }
 
   return (
-    <div className=' flex justify-center items-center gap-1'>
+    <div className=' flex justify-center items-center gap-1 my-5'>
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}

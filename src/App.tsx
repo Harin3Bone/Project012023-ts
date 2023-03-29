@@ -11,7 +11,7 @@ import GlobalLoadingProvider from "./context/loading/GlobalLoadingProvider";
 //Page
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
-import ProfilePage from "./pages/ProfilePage";
+import AccountPage from "./pages/AccountPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ConfirmationEmailPage from "./pages/ConfirmationEmailPage";
@@ -51,7 +51,7 @@ function App() {
           <Route index element={<HomePage />} caseSensitive />
           <Route element={<PrivateRoute />}>
             <Route path='about' element={<AboutPage />} caseSensitive />
-            <Route path='profile' element={<ProfilePage />} caseSensitive />
+            <Route path='account' element={<AccountPage />} caseSensitive />
           </Route>
         </Route>
         <Route path='sign-in' element={<SignInPage />} caseSensitive />

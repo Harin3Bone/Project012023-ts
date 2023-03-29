@@ -6,6 +6,10 @@ import SearchBox from "./SearchBox";
 import CategoryFilter from "./CategoryFilter";
 import Product from "./Product";
 import Pagination from "./Pagination";
+import SelectSort from "./SelectSort";
+
+//constraint
+import { itemsPerPageOptions, sortOrderOptions } from "src/constraint/SELECT_SORT_LIST";
 
 function ProductsList() {
   const {
@@ -36,27 +40,18 @@ function ProductsList() {
             onChangeInput={handleSearchInputChange}
           />
           <div className='flex justify-end items-center w-full mt-6'>
-            <select
-              id='itemsPerPage'
+            <SelectSort
+              options={itemsPerPageOptions}
               value={itemsPerPage}
               onChange={handlePerPageChange}
               className='hidden sm:block w-52 rounded-md border border-gray-300 mr-2 px-3 py-2 text-slate-800 text-lg'
-            >
-              <option value='8'>PerPage: 8</option>
-              <option value='12'>PerPage: 12</option>
-              <option value='24'>PerPage: 24</option>
-            </select>
-            <select
-              id='sortOrder'
+            />
+            <SelectSort
+              options={sortOrderOptions}
               value={sortOrder}
               onChange={handleSortOrderChange}
               className='w-52 rounded-md border border-gray-300 px-3 py-2 text-slate-800 text-lg'
-            >
-              <option value='asc'>{"Product Name (A-Z)"}</option>
-              <option value='desc'>{"Product Name (Z-A)"}</option>
-              <option value='price_asc'>{"Price (Low to High)"}</option>
-              <option value='price_desc'>{"Price (High to Low)"}</option>
-            </select>
+            />
           </div>
         </div>
       </div>
