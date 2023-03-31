@@ -1,5 +1,8 @@
 import { useState, useMemo, useCallback } from "react";
 
+//store
+import useFilteredProductStore from "store/useFilteredProductStore.store";
+
 //hook
 import { useGlobalLoading } from "../useGlobalLoading";
 
@@ -17,6 +20,8 @@ function useFilteredProduct({
   searchText,
   selectedCategories,
 }: useFilteredProductPropsType) {
+  const setFilteredProduct = useFilteredProductStore((state) => state.setFilteredProduct);
+
   const { onUpdateIsOpen } = useGlobalLoading();
 
   //useState
@@ -53,8 +58,7 @@ function useFilteredProduct({
           return 0;
       }
     });
-
-    return sortedProducts;
+    setFilteredProduct(sortedProducts);
   }, [searchText, products, selectedCategories, sortOrder]);
 
   //useCallback SortOrder

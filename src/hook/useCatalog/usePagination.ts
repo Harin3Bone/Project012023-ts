@@ -1,20 +1,20 @@
 import { useState, useEffect, useCallback } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 //hook
 import { useGlobalLoading } from "../useGlobalLoading";
 
 //type
-import { ProductsDataType, ProductsType } from "api/product/product.type";
+import { ProductsDataType } from "api/product/product.type";
 
 type usePaginationPropsType = {
-  products: ProductsType | null;
   filteredProduct: ProductsDataType[];
+  selectedCategories: number[];
 };
 
-function usePagination({ products, filteredProduct }: usePaginationPropsType) {
-  const location = useLocation();
-  const [searchParams] = useSearchParams(location.search);
+function usePagination({ filteredProduct, selectedCategories }: usePaginationPropsType) {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const { onUpdateIsOpen } = useGlobalLoading();
 
@@ -24,13 +24,20 @@ function usePagination({ products, filteredProduct }: usePaginationPropsType) {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = products?.data && filteredProduct.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredProduct.slice(indexOfFirstItem, indexOfLastItem);
 
-  useEffect;
+  //useEffect
   useEffect(() => {
     const page = parseInt(searchParams.get("page") || "1");
     setCurrentPage(page);
   }, [location]);
+
+  useEffect(() => {
+    if (selectedCategories.length > 0) {
+      setCurrentPage(1);
+      navigate("?page=1");
+    }
+  }, [selectedCategories, navigate]);
 
   //useCallback
   const handlePerPageChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -39,7 +46,7 @@ function usePagination({ products, filteredProduct }: usePaginationPropsType) {
     const timerId = setTimeout(() => {
       setItemsPerPage(parseInt(newPerPage));
       onUpdateIsOpen();
-    },250);
+    }, 250);
     return () => clearTimeout(timerId);
   }, []);
 
@@ -53,6 +60,4 @@ function usePagination({ products, filteredProduct }: usePaginationPropsType) {
 }
 
 export default usePagination;
-//location.search คือ property ของ object window.location ที่เก็บ query parameters ของ URL ในรูปแบบของ string แล้วเราเข้าถึง location.search จะได้ string ดังนี้ ?name=john&age=30
-//location.search ไปใส่เพื่อให้ useSearchParams สามารถดึง query parameters ออกมาจาก URL ของเพจนั้นๆ ได้ โดยในตัวอย่างนี้ค่า location.search นั้นถูกส่งเข้าไปเพื่อสร้าง instance ของ URLSearchParams ที่จะใช้ในการดึง query parameters จาก URL ของเพจนั้นๆ
-//ถ้าไม่ใส่ location.search ใน useSearchParams จะไม่สามารถดึงค่าพารามิเตอร์จาก query string ของ URL ได้ เพราะ location.search เป็น property ของ window.location ที่เก็บค่า query string ของ URL และถ้าไม่ใส่จะไม่มีค่า query string ถูกส่งมา ดังนั้น useSearchParams
+//parseInt(string, radix) สามารถแปลงเป็นตัวเลข และหยุดทันทีเมื่อเจอตัวอักษรที่ไม่สามารถแปลงเป็นตัวเลขได้ เช่น parseInt("1010", 2); output 10

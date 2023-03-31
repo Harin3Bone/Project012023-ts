@@ -1,5 +1,8 @@
 import { useState, useCallback } from "react";
 
+//store
+import useFilteredProductStore from "store/useFilteredProductStore.store";
+
 //hook
 import { useGlobalLoading } from "../useGlobalLoading";
 
@@ -7,11 +10,16 @@ type useCategoryFilterProductPropsType = {
   setSearchText: React.Dispatch<React.SetStateAction<string>>;
 };
 
-function useCategoryFilterProduct({ setSearchText }: useCategoryFilterProductPropsType) {
+function useCategoryFilterProduct({
+  setSearchText,
+}: useCategoryFilterProductPropsType) {
+  const { setSelectedCategories } = useFilteredProductStore((state) => ({
+    setSelectedCategories: state.setSelectedCategories,
+  }));
+
   const { onUpdateIsOpen } = useGlobalLoading();
 
   //useState
-  const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
   const [unconfirmedCategories, setUnconfirmedCategories] = useState<number[]>([]);
 
   //useCallback
@@ -27,7 +35,7 @@ function useCategoryFilterProduct({ setSearchText }: useCategoryFilterProductPro
       onUpdateIsOpen();
       const timerId = setTimeout(() => {
         setSelectedCategories(unconfirmedCategories);
-        setUnconfirmedCategories([]);
+        // setUnconfirmedCategories([]);
         onUpdateIsOpen();
       }, 250);
       return () => clearTimeout(timerId);
@@ -53,7 +61,6 @@ function useCategoryFilterProduct({ setSearchText }: useCategoryFilterProductPro
   }, []);
 
   return {
-    selectedCategories,
     handleCategorySubmit,
     handleResetForm,
     handleCategoryInputChange,

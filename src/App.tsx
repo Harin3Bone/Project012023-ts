@@ -10,6 +10,7 @@ import GlobalLoadingProvider from "./context/loading/GlobalLoadingProvider";
 
 //Page
 import HomePage from "./pages/HomePage";
+import Products from "pages/Products";
 import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import SignInPage from "./pages/SignInPage";
@@ -30,7 +31,7 @@ function App() {
   const onGetProfile = useProfileStore((state) => state.onGetProfile);
 
   const onGetProfileWithJwt = useCallback(async () => {
-    await onGetProfile()
+    await onGetProfile();
   }, []);
 
   useEffect(() => {
@@ -47,8 +48,9 @@ function App() {
     <GlobalLoadingProvider>
       <ToastContainer />
       <Routes>
-        <Route path='/' element={<Layout/>}>
+        <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} caseSensitive />
+          <Route path='products' element={<Products />} caseSensitive />
           <Route element={<PrivateRoute />}>
             <Route path='about' element={<AboutPage />} caseSensitive />
             <Route path='account' element={<AccountPage />} caseSensitive />
