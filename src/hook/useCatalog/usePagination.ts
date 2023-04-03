@@ -1,20 +1,25 @@
 import { useState, useEffect, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import { shallow } from "zustand/shallow";
+
+//store
+import useFilteredProductStore from "store/useFilteredProductStore.store";
 
 //hook
 import { useGlobalLoading } from "../useGlobalLoading";
 
-//type
-import { ProductsDataType } from "api/product/product.type";
 
-type usePaginationPropsType = {
-  filteredProduct: ProductsDataType[];
-  selectedCategories: number[];
-};
-
-function usePagination({ filteredProduct, selectedCategories }: usePaginationPropsType) {
+function usePagination() {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+
+  const { filteredProduct, selectedCategories } = useFilteredProductStore(
+    (state) => ({
+      filteredProduct: state.filteredProduct,
+      selectedCategories: state.selectedCategories,
+    }),
+    shallow,
+  );
 
   const { onUpdateIsOpen } = useGlobalLoading();
 

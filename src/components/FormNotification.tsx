@@ -1,4 +1,4 @@
-import ButtonDefault from "./ButtonDefault";
+import ButtonDefault from "./button/ButtonDefault";
 
 type FormNotificationPropTypes = {
   formHeader: string;

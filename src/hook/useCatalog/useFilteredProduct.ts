@@ -1,4 +1,5 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
+import { shallow } from "zustand/shallow";
 
 //store
 import useFilteredProductStore from "store/useFilteredProductStore.store";
@@ -12,15 +13,16 @@ import { ProductsType } from "api/product/product.type";
 type useFilteredProductPropsType = {
   products: ProductsType | null;
   searchText: string;
-  selectedCategories: number[];
 };
 
-function useFilteredProduct({
-  products,
-  searchText,
-  selectedCategories,
-}: useFilteredProductPropsType) {
-  const setFilteredProduct = useFilteredProductStore((state) => state.setFilteredProduct);
+function useFilteredProduct({ products, searchText }: useFilteredProductPropsType) {
+  const { selectedCategories, setFilteredProduct } = useFilteredProductStore(
+    (state) => ({
+      selectedCategories: state.selectedCategories,
+      setFilteredProduct: state.setFilteredProduct,
+    }),
+    shallow,
+  );
 
   const { onUpdateIsOpen } = useGlobalLoading();
 
@@ -58,8 +60,14 @@ function useFilteredProduct({
           return 0;
       }
     });
-    setFilteredProduct(sortedProducts);
+
+    return sortedProducts;
   }, [searchText, products, selectedCategories, sortOrder]);
+
+  //useEffect
+  useEffect(() => {
+    setFilteredProduct(filteredProduct);
+  }, [filteredProduct]);
 
   //useCallback SortOrder
   const handleSortOrderChange = useCallback((event: React.ChangeEvent<HTMLSelectElement>) => {

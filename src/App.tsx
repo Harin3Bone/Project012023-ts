@@ -13,6 +13,9 @@ import HomePage from "./pages/HomePage";
 import Products from "pages/Products";
 import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
+import OverviewProfile from "pages/profile/OverviewProfile";
+import ChangePassword from "pages/profile/ChangePassword";
+import EditProfile from "pages/profile/EditProfile";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
 import ConfirmationEmailPage from "./pages/ConfirmationEmailPage";
@@ -53,7 +56,11 @@ function App() {
           <Route path='products' element={<Products />} caseSensitive />
           <Route element={<PrivateRoute />}>
             <Route path='about' element={<AboutPage />} caseSensitive />
-            <Route path='account' element={<AccountPage />} caseSensitive />
+            <Route path='account' element={<AccountPage/>} caseSensitive >
+              <Route path='overview' element={<OverviewProfile/>} caseSensitive />
+              <Route path='edit-profile' element={<EditProfile/>} caseSensitive />
+              <Route path='change-password' element={<ChangePassword/>} caseSensitive />
+            </Route>
           </Route>
         </Route>
         <Route path='sign-in' element={<SignInPage />} caseSensitive />

@@ -1,5 +1,7 @@
 import { CategoriesDataType } from "api/category/categories.type";
-import "style/App.css";
+// import "style/App.css";
+
+import ButtonMultipurpose from "components/button/ButtonMultipurpose";
 
 type CategoryFilterPropTypes = {
   category: CategoriesDataType[];
@@ -41,18 +43,20 @@ function CategoryFilter({
       </div>
       <div className='flex justify-center mt-6 mb-3'>
         <div className='flex justify-between w-44'>
-          <button
+          <ButtonMultipurpose
             type='reset'
-            className='filterCheckbox w-20 px-2 py-1 border-2 rounded-lg cursor-pointer select-none hover:bg-black hover:text-white hover:shadow-lg hover:-translate-y-0.5  active:shadow-none active:translate-y-0'
+            addition={"w-20 px-2 py-1 rounded-lg hover:bg-black hover:text-white"}
           >
             Clear All
-          </button>
-          <button
+          </ButtonMultipurpose>
+          <ButtonMultipurpose
             type='submit'
-            className='filterCheckbox w-20 px-2 py-1 border-2 rounded-lg bg-black text-white cursor-pointer select-none hover:bg-white hover:text-black hover:shadow-lg hover:-translate-y-0.5  active:shadow-none active:translate-y-0'
+            addition={
+              "w-20 px-2 py-1 rounded-lg bg-black text-white hover:bg-white hover:text-black"
+            }
           >
             Apply
-          </button>
+          </ButtonMultipurpose>
         </div>
       </div>
     </form>

@@ -23,6 +23,10 @@ function ProfileDropdown() {
         {user?.username.slice(0, 2).toUpperCase()}
       </button>
       <div className={isDropdownOpen ? " block" : " hidden"}>
+        <div
+          className='absolute inset-0 w-screen h-screen bg-transparent -z-10'
+          onClick={() => setIsDropdownOpen(false)}
+        />
         <div className='absolute flex justify-center top-20 right-1 lg:right-10 xl:right-16 w-72 rounded-2xl bg-[#35363a] shadow-xl z-40'>
           <div className='m-2 bg-[#202124] rounded-2xl '>
             <div className=' flex justify-between items-center p-4 border-b-2 border-[#35363a] cursor-pointer'>

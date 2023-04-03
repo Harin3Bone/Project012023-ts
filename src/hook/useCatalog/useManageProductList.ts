@@ -1,8 +1,5 @@
 import { useMemo, useCallback } from "react";
 
-//store
-import useFilteredProductStore from "store/useFilteredProductStore.store";
-
 //hook
 import useCatalogData from "./useCatalogData";
 import useSearchProduct from "./useSearchProduct";
@@ -13,23 +10,16 @@ import usePagination from "./usePagination";
 function useManageProductList() {
   const [products, category] = useCatalogData();
 
-  const { filteredProduct, selectedCategories } = useFilteredProductStore(
-    (state) => ({
-      filteredProduct: state.filteredProduct,
-      selectedCategories: state.selectedCategories,
-    }),
-  );
-
   const { searchText, setSearchText, searchInput, handleSearchSubmit, handleSearchInputChange } =
     useSearchProduct();
   const { currentPage, setCurrentPage, itemsPerPage, currentItems, handlePerPageChange } =
-    usePagination({ filteredProduct: filteredProduct, selectedCategories: selectedCategories });
+    usePagination();
   const { handleCategorySubmit, handleResetForm, handleCategoryInputChange } =
     useCategoryFilterProduct({ setSearchText: setSearchText });
-  const { sortOrder, handleSortOrderChange } = useFilteredProduct({
+  const { sortOrder, filteredProduct, handleSortOrderChange } = 
+    useFilteredProduct({
     products: products,
     searchText: searchText,
-    selectedCategories: selectedCategories,
   });
 
   //useMemo

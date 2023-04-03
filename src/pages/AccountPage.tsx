@@ -1,6 +1,5 @@
-import { useState } from "react";
-import { Link as NavLink } from "react-router-dom";
-import "style/App.css";
+import { useEffect, useState } from "react";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 
 //ref https://www.spotify.com/th-th/account/overview/
 //ref https://discord.com/channels/@me
@@ -9,6 +8,9 @@ import "style/App.css";
 import useProfileStore from "store/profile/profile.store";
 
 function AccountPage() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const user = useProfileStore((state) => state.user);
 
   //useState
@@ -19,6 +21,12 @@ function AccountPage() {
       setFilePicture(event.target.files[0]);
     }
   };
+
+  useEffect(() => {
+    if(location.pathname === "/account"){
+      navigate("/account/overview");
+    }
+  }, []);
 
   return (
     <div className='flex justify-center h-screen bg-gradient-to-b from-[#1f2a39] to-black'>
@@ -44,46 +52,24 @@ function AccountPage() {
           </div>
           <ul className='h-1/2 mt-4 text-white text-lg'>
             <li className='border-t-[1px] border-t-white/20 border-b-[1px] border-b-white/5'>
-              <NavLink to='/account' className='flex items-center h-14 ml-4'>
+              <NavLink to='/account/overview' className='flex items-center h-14 ml-4'>
                 User account overview
               </NavLink>
             </li>
             <li className='border-y-[1px] border-t-white/20 border-b-[1px] border-b-white/5'>
-              <NavLink to='/account' className='flex items-center h-14 ml-4'>
+              <NavLink to='/account/edit-profile' className='flex items-center h-14 ml-4'>
                 Edit profile
               </NavLink>
             </li>
             <li className='border-y-[1px] border-y-white/20'>
-              <NavLink to='/account' className='flex items-center h-14 ml-4'>
+              <NavLink to='/account/change-password' className='flex items-center h-14 ml-4'>
                 Change password
               </NavLink>
             </li>
           </ul>
         </div>
-        <div className='w-auto lg:w-[37rem] p-12 bg-white'>
-          <h1 className='text-4xl mb-12'>User account overview</h1>
-          <div className='mb-12'>
-            <h3 className='text-2xl mb-6'>Profile</h3>
-            <table className='table table-auto w-full'>
-              <tbody>
-                <tr>
-                  <td className='w-1/2 border-b border-gray-500 px-4 py-4 text-gray-500'>
-                    Username
-                  </td>
-                  <td className='w-1/2 border-b border-gray-500 px-4 py-4'>{user?.username}</td>
-                </tr>
-                <tr>
-                  <td className='w-1/2 border-b border-gray-500 px-4 py-4 text-gray-500'>Email</td>
-                  <td className='w-1/2 border-b border-gray-500 px-4 py-4'>{user?.email}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <button 
-            className='filterCheckbox px-4 py-2 border-2 border-neutral-600 rounded-full cursor-pointer select-none hover:bg-black hover:text-white hover:shadow-lg hover:-translate-y-0.5  active:shadow-none active:translate-y-0'
-          >
-            Edit profile
-          </button>
+        <div className='w-screen sm:w-auto lg:w-[37rem] p-12 bg-white'>
+          <Outlet />
         </div>
       </div>
     </div>
