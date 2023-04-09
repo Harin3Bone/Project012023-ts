@@ -16,15 +16,15 @@ function OverviewProfile() {
       <h1 className='text-4xl mb-12'>User account overview</h1>
       <div className='mb-12'>
         <h3 className='text-2xl mb-6'>Profile</h3>
-        <table className='table table-auto w-full'>
+        <table className='table table-auto w-full overflow-hidden'>
           <tbody>
             <tr>
-              <td className='w-1/2 border-b border-gray-500 px-4 py-4 text-gray-500'>Username</td>
-              <td className='w-1/2 border-b border-gray-500 px-4 py-4'>{user?.username}</td>
+              <td className='w-1/2 border-b border-gray-500 pl-4 py-4 text-gray-500'>Username</td>
+              <td className='w-1/2 border-b border-gray-500 pr-4 py-4 text-ellipsis'>{user?.username}</td>
             </tr>
             <tr>
-              <td className='w-1/2 border-b border-gray-500 px-4 py-4 text-gray-500'>Email</td>
-              <td className='w-1/2 border-b border-gray-500 px-4 py-4'>{user?.email}</td>
+              <td className='w-1/2 border-b border-gray-500 pl-4 py-4 text-gray-500'>Email</td>
+              <td className='w-1/2 border-b border-gray-500 pr-4 py-4 text-ellipsis'>{user?.email}</td>
             </tr>
           </tbody>
         </table>

@@ -1,4 +1,4 @@
-import InputMultipurpose from "components/Input/InputMultipurpose";
+import InputMultipurpose from "components/InputX/InputMultipurpose";
 import ButtonMultipurpose from "components/button/ButtonMultipurpose";
 
 function ChangePassword() {

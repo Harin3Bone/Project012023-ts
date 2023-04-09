@@ -2,7 +2,7 @@ import { useId } from "react";
 import { Link } from "react-router-dom";
 
 //components
-import InputDefault from "components/Input/InputDefault";
+import InputDefault from "components/InputX/InputDefault";
 import ButtonDefault from "components/button/ButtonDefault";
 
 //reference  https://dribbble.com/shots/19771040-Sign-up-page-Untitled-UI

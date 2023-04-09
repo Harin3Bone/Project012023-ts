@@ -1,9 +1,9 @@
-export type ProductType = {
-  data?: ProductDataType;
+export type ProductsType = {
+  data?: ProductsDataType[];
   meta?: Meta;
 }
 
-export type ProductDataType = {
+export type ProductsDataType = {
   id?:          number;
   name?:        string;
   desc?:        string;
@@ -20,11 +20,19 @@ export type ProductDataType = {
 
 export type Category = {
   id?:          number;
-  title?:       string;
-  desc?:        string;
+  title?:       Desc;
+  desc?:        Desc;
   createdAt?:   string;
   updatedAt?:   string;
   publishedAt?: string;
+}
+
+export enum Desc {
+  BluetoothSpeakers = "Bluetooth speakers",
+  DescHeadPhones = "Head Phones",
+  HeadPhones = "Head phones",
+  SmartWatches = "Smart watches",
+  WirelessEarbuds = "Wireless earbuds",
 }
 
 export type Img = {
@@ -36,28 +44,34 @@ export type Img = {
   height?:            number;
   formats?:           Formats;
   hash?:              string;
-  ext?:               string;
-  mime?:              string;
+  ext?:               EXT;
+  mime?:              MIME;
   size?:              number;
   url?:               string;
   previewUrl?:        null;
-  provider?:          string;
+  provider?:          Provider;
   provider_metadata?: ProviderMetadata;
   createdAt?:         string;
   updatedAt?:         string;
 }
 
-export type Formats = {
-  small?:     Medium;
-  medium?:    Medium;
-  thumbnail?: Medium;
+export enum EXT {
+  PNG = ".png",
+  Webp = ".webp",
 }
 
-export type Medium = {
-  ext?:               string;
+export type Formats = {
+  small?:     Large;
+  thumbnail?: Large;
+  large?:     Large;
+  medium?:    Large;
+}
+
+export type Large = {
+  ext?:               EXT;
   url?:               string;
   hash?:              string;
-  mime?:              string;
+  mime?:              MIME;
   name?:              string;
   path?:              null;
   size?:              number;
@@ -66,10 +80,31 @@ export type Medium = {
   provider_metadata?: ProviderMetadata;
 }
 
+export enum MIME {
+  ImagePNG = "image/png",
+  ImageWebp = "image/webp",
+}
+
 export type ProviderMetadata = {
   public_id?:     string;
-  resource_type?: string;
+  resource_type?: ResourceType;
+}
+
+export enum ResourceType {
+  Image = "image",
+}
+
+export enum Provider {
+  Cloudinary = "cloudinary",
 }
 
 export type Meta = {
+  pagination?: Pagination;
+}
+
+export type Pagination = {
+  page?:      number;
+  pageSize?:  number;
+  pageCount?: number;
+  total?:     number;
 }

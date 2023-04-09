@@ -8,7 +8,7 @@ import useFilteredProductStore from "store/useFilteredProductStore.store";
 import { useGlobalLoading } from "../useGlobalLoading";
 
 //type
-import { ProductsType } from "api/product/product.type";
+import { ProductsType } from "api/products/products.type";
 
 type useFilteredProductPropsType = {
   products: ProductsType | null;

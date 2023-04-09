@@ -4,7 +4,7 @@ import { devtools } from "zustand/middleware";
 import { definedStore } from "helpers/*";
 
 //type
-import { ProductsDataType } from "api/product/product.type";
+import { ProductsDataType } from "api/products/products.type";
 
 type useFilteredProductStoreType = {
   filteredProduct: ProductsDataType[];

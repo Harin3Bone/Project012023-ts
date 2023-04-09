@@ -2,20 +2,20 @@ import { useEffect } from "react";
 import { shallow } from "zustand/shallow";
 
 //store
-import useProductStore from "store/product/product.store";
+import useProductsStore from "store/products/products.store";
 import useCategoriesStore from "store/categories/categories.store";
 
 //hook
 import { useGlobalLoading } from "../useGlobalLoading";
 
 //type
-import { ProductsType } from "api/product/product.type";
+import { ProductsType } from "api/products/products.type";
 import { CategoriesType } from "api/category/categories.type";
 
 type UseCatalogDataReturnType = [products: ProductsType | null, category: CategoriesType | null];
 
 function useCatalogData(): UseCatalogDataReturnType {
-  const { products, errorProduct, getProducts } = useProductStore(
+  const { products, errorProduct, getProducts } = useProductsStore(
     (state) => ({
       products: state.data,
       errorProduct: state.error,

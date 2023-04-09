@@ -4,15 +4,15 @@ import { devtools } from "zustand/middleware";
 import { definedStore } from "helpers/*";
 
 //api
-import { onGetProduct } from "api/product";
+import { onGetProduct, onGetProductPropType } from "api/product";
 
 //type
-import { ProductsType } from "api/product/product.type";
+import { ProductType } from "api/product/product.type";
 
 type useProductStoreType = {
-  data: ProductsType | null;
+  data: ProductType | null;
   error: string | null;
-  getProducts: () => Promise<void>;
+  getProduct: ({ item }: onGetProductPropType) => Promise<void>;
 };
 
 const useProductStore = create<useProductStoreType>()(
@@ -20,14 +20,11 @@ const useProductStore = create<useProductStoreType>()(
     (set) => ({
       data: null,
       error: null,
-      getProducts: async () => {
-        const [data, error] = await onGetProduct();
-        if (error) {
-          set({ error: error }, false, "getProductsError");
-        }
-        if (data) {
-          set({ data: data }, false, "getProductsSuccessfully");
-        }
+      getProduct: async (item) => {
+        const [data, error] = await onGetProduct(item);
+        error
+          ? set({ error: error }, false, "getProductError")
+          : set({ data: data }, false, "getProductSuccessfully");
       },
     }),
     definedStore("useProductStore"),
