@@ -6,7 +6,7 @@ import useProductData from "hook/useProductData";
 import formatPrice from "helpers/*";
 
 import ButtonMultipurpose from "components/button/ButtonMultipurpose";
-import QuantityInput from "components/InputX/QuantityInput";
+import QuantityInput from "components/input/QuantityInput";
 import PresentProduct from "components/product/PresentProduct";
 import ImageModal from "components/product/ImageModal";
 

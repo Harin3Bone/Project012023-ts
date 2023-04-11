@@ -1,7 +1,7 @@
 import ButtonMultipurpose from "components/button/ButtonMultipurpose";
 
 //component
-import InputMultipurpose from "components/InputX/InputMultipurpose";
+import InputMultipurpose from "components/input/InputMultipurpose";
 
 function EditProfile() {
   return (
