@@ -11,7 +11,7 @@ function PresentProduct({ productImageUrl, alt, onOpen }: PresentProductPropsTyp
   const isTransparent = useCheckTransparency({ imageUrl: productImageUrl });
   const averageRGB = useAverageRGB({ imageUrl: productImageUrl });
   const colorRGB = isTransparent
-    ? `rgba(${averageRGB.r}, ${averageRGB.g}, ${averageRGB.b}, 0.6)`
+    ? `rgba(${averageRGB.r}, ${averageRGB.g}, ${averageRGB.b}, 0.4)`
     : "";
 
   return (
@@ -31,7 +31,7 @@ function PresentProduct({ productImageUrl, alt, onOpen }: PresentProductPropsTyp
         <img
           src={productImageUrl}
           alt={alt}
-          className={isTransparent ? "" : "border-4 rounded-2xl shadow-xl"}
+          className={isTransparent ? "" : "rounded-2xl shadow-xl"}
         />
       </div>
     </div>

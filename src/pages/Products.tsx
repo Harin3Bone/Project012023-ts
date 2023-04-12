@@ -1,14 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import useProductData from "hook/useProductData";
 
-import formatPrice from "helpers/*";
-
-import ButtonMultipurpose from "components/button/ButtonMultipurpose";
-import QuantityInput from "components/input/QuantityInput";
 import PresentProduct from "components/product/PresentProduct";
 import ImageModal from "components/product/ImageModal";
+import AddToCartForm from "components/product/AddToCartForm";
 
 //reference Products https://www.frontendpractice.com/projects/backstage-talks
 //reference https://www.kingpower.com
@@ -24,10 +21,23 @@ function Products() {
   const product = useProductData({ item: dummy });
   // console.log(product?.data);
 
+  const price: number = product?.data?.price ? product?.data?.price : 0;
   const stockNumber: number = product?.data?.stock ? product?.data?.stock : 0;
   const productImageUrl: string = product?.data?.img?.formats?.small?.url
     ? product?.data?.img?.formats?.small?.url
     : "";
+
+  useEffect(() => {
+    if (isImgOpen) {
+      document.body.style.overflowY = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflowY = "auto";
+    };
+  }, [isImgOpen]);
 
   return (
     <div className='flex justify-center md:my-16 '>
@@ -71,22 +81,7 @@ function Products() {
               />
             </div>
             <p className='font-mono text-justify text-sm sm:text-base'>{product?.data?.desc}</p>
-            <div>
-              <div className=' flex justify-between mt-6 mb-8'>
-                <div>
-                  <p className=' text-xl mb-1'>Price : </p>
-                  <p className='text-2xl'>
-                    {product?.data?.price && formatPrice(product?.data?.price)}
-                  </p>
-                </div>
-                <QuantityInput maxStock={stockNumber} />
-              </div>
-              <div>
-                <ButtonMultipurpose addition='px-4 py-2 rounded-lg bg-black text-white'>
-                  Add to Cart
-                </ButtonMultipurpose>
-              </div>
-            </div>
+            <AddToCartForm price={price} maxStock={stockNumber} />
           </div>
         </div>
       </div>
