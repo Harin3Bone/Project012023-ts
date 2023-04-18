@@ -42,14 +42,6 @@ function Products() {
   return (
     <div className='flex justify-center md:my-16 '>
       <div className={isImgOpen ? "block" : "hidden"}>
-        <div>
-          <div className='fixed inset-0 bg-black/60 z-20' onClick={() => setIsImgOpen(false)} />
-          <div className='absolute max-sm:top-1/4 left-1/2 flex justify-center items-center -translate-x-1/2 translate-y-12 md:-translate-y-12 z-30'>
-            <div className='flex justify-center items-center min-w-[20rem] sm:min-w-[30rem] p-8 rounded-lg bg-white  shadow-2xl'>
-              <img src={productImageUrl} alt={product?.data?.img?.formats?.small?.hash} />
-            </div>
-          </div>
-        </div>
         <ImageModal
           productImageUrl={productImageUrl}
           alt={product?.data?.img?.formats?.small?.hash}
@@ -80,7 +72,7 @@ function Products() {
                 onOpen={() => setIsImgOpen((prevIsImgOpen) => !prevIsImgOpen)}
               />
             </div>
-            <p className='font-mono text-justify text-sm sm:text-base'>{product?.data?.desc}</p>
+            <p className='text-justify text-sm sm:text-base'>{product?.data?.desc}</p>
             <AddToCartForm price={price} maxStock={stockNumber} />
           </div>
         </div>

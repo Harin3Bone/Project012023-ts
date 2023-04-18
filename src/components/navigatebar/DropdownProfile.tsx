@@ -43,7 +43,7 @@ function ProfileDropdown() {
             </NavLink>
             <div className='flex justify-center items-center h-16 border-b-2 border-[#35363a] select-none hover:bg-[#35363a]/50'>
               <button className='w-full h-full text-lg' onClick={() => onSignOut()}>
-                sign out
+                Sign out
               </button>
             </div>
           </div>

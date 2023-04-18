@@ -5,6 +5,7 @@ import ProductsList from "components/productlist/ProductsList";
 //Products https://css-tricks.com/practical-css-scroll-snapping/
 
 function HomePage() {
+
   return (
     <div>
       <div className='w-full h-[15.4rem] sm:h-[22.4rem] md:h-[27.4rem] lg:h-[35.4rem] overflow-hidden -z-10'>

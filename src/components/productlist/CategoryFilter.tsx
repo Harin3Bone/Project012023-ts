@@ -49,7 +49,7 @@ function CategoryFilter({
             type='reset'
             addition={"w-20 px-2 py-1 rounded-lg hover:bg-black hover:text-white"}
           >
-            Clear All
+            Clear
           </ButtonMultipurpose>
           <ButtonMultipurpose
             type='submit'
