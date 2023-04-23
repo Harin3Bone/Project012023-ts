@@ -2,6 +2,8 @@ import axios from "axios";
 import * as dayjs from "dayjs";
 import jwtDecode from "jwt-decode";
 
+import useAuthenticationStore from "store/authentication/authentication.store";
+
 const axiosApiInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   withCredentials: true,
@@ -19,12 +21,11 @@ axiosApiInstance.interceptors.request.use(
       if (!isExpired) {
         config.headers["Authorization"] = `Bearer ${token.state.jwt}`;
         return config;
+      } else {
+        useAuthenticationStore.getState().onRemoveJwt();
       }
-
       return config;
-    } else {
     }
-
     return config;
   },
   (error) => {
@@ -43,3 +44,4 @@ axiosApiInstance.interceptors.response.use(
 
 const client = axiosApiInstance;
 export default client;
+// useAuthenticationStore.getState().onRemoveJwt();การใช้งานแบบนี้เพราะไม่สามารถใช้งาน zustand ในรูปแบบแบบปกติได้ มันอยู่นอกเงือนไขการใช้งาน hook การเขียนแบบปกติจะสามารถในใช้ในเงื่อนไข hook เท่านั้น

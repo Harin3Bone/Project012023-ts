@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
-
 //ref https://www.spotify.com/th-th/account/overview/
 //ref https://discord.com/channels/@me
+
+import { useEffect, useState } from "react";
+import { NavLink, Outlet, useNavigate, useLocation } from "react-router-dom";
 
 //store
 import useProfileStore from "store/profile/profile.store";
@@ -12,6 +12,7 @@ function AccountPage() {
   const location = useLocation();
 
   const user = useProfileStore((state) => state.user);
+
 
   //useState
   const [filePicture, setFilePicture] = useState<File | null>(null);
@@ -29,9 +30,9 @@ function AccountPage() {
   }, []);
 
   return (
-    <div className='flex justify-center h-screen bg-gradient-to-b from-[#1f2a39] to-black'>
+    <div className='flex justify-center min-h-screen bg-gradient-to-b from-[#1f2a39] to-black'>
       <div className='flex justify-start w-auto lg:w-[55rem] h-full'>
-        <div className='hidden sm:block w-72 bg-[#1b1b1b]'>
+        <div className='hidden md:block w-72 bg-[#1b1b1b]'>
           <div className=' flex justify-center items-center w-full h-1/4 mt-2'>
             <label htmlFor='profilePicInput' className='cursor-pointer'>
               <div className='hoverAble  flex justify-center items-center w-40 h-40 border-4 border-black rounded-full bg-white overflow-hidden'>
@@ -52,23 +53,23 @@ function AccountPage() {
           </div>
           <ul className='h-1/2 mt-4 text-white text-lg'>
             <li className='border-t-[1px] border-t-white/20 border-b-[1px] border-b-white/5'>
-              <NavLink to='/account/overview' className='flex items-center h-14 ml-4'>
-                User account overview
+              <NavLink to='/account/overview' className='flex items-center h-14'>
+                <span className="ml-4">User account overview</span>
               </NavLink>
             </li>
             <li className='border-y-[1px] border-t-white/20 border-b-[1px] border-b-white/5'>
-              <NavLink to='/account/edit-profile' className='flex items-center h-14 ml-4'>
-                Edit profile
+              <NavLink to='/account/edit-profile' className='flex items-center h-14'>
+                <span className="ml-4">Edit profile</span>
               </NavLink>
             </li>
             <li className='border-y-[1px] border-y-white/20'>
-              <NavLink to='/account/change-password' className='flex items-center h-14 ml-4'>
-                Change password
+              <NavLink to='/account/change-password' className='flex items-center h-14'>
+                <span className="ml-4">Change password</span>
               </NavLink>
             </li>
           </ul>
         </div>
-        <div className='w-screen sm:w-auto lg:w-[37rem] p-12 bg-white'>
+        <div className='w-screen md:w-auto lg:w-[37rem] p-12 bg-white'>
           <Outlet />
         </div>
       </div>
@@ -77,4 +78,3 @@ function AccountPage() {
 }
 
 export default AccountPage;
-//#014871,#d7ede2 /#112d60,#b6c0c5

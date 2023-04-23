@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useRef } from "react";
 
 //hook
 import { useGlobalLoading } from "../useGlobalLoading";
@@ -8,33 +8,37 @@ function useSearchProduct() {
 
   //useState
   const [searchText, setSearchText] = useState<string>("");
-  const [searchInput, setSearchInput] = useState<string>("");
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  const executeSearch = (input: string) => {
+    onUpdateIsOpen();
+    const timerId = setTimeout(() => {
+      setSearchText(input);
+      onUpdateIsOpen();
+    }, 250);
+
+    return () => clearTimeout(timerId);
+  };
 
   //useCallback
   const handleSearchSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      onUpdateIsOpen();
-      const timerId = setTimeout(() => {
-        setSearchText(searchInput);
-        onUpdateIsOpen();
-      }, 250);
-
-      return () => clearTimeout(timerId);
+      if (!searchRef.current) return;
+      executeSearch(searchRef.current.value);
     },
-    [searchInput],
+    [searchRef],
   );
 
-  const handleSearchInputChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(event.target.value);
-  }, []);
+  // const handleSearchInputChange = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+  //   setSearchInput(event.target.value);
+  // }, []);
 
   return {
     searchText,
     setSearchText,
-    searchInput,
+    searchRef,
     handleSearchSubmit,
-    handleSearchInputChange,
   };
 }
 

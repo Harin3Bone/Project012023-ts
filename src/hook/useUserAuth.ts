@@ -29,7 +29,13 @@ export type informationFormClassificationType = {
 
 function useUserAuth() {
   //store
-  const { onSetJwt, onRemoveJwt } = useAuthenticationStore();
+  const { onSetJwt, onRemoveJwt } = useAuthenticationStore(
+    (state) => ({
+      onSetJwt: state.onSetJwt,
+      onRemoveJwt: state.onRemoveJwt,
+    }),
+    shallow,
+  );
   const { onUpdateUser, onRemoveUser } = useProfileStore(
     (state) => ({
       onUpdateUser: state.onUpdateUser,
@@ -69,7 +75,7 @@ function useUserAuth() {
       if (data?.jwt && data?.user) {
         dummy = data.user?.email;
         onSetJwt(data.jwt);
-        data.user && onUpdateUser(data.user)
+        data.user && onUpdateUser(data.user);
         onUpdateIsOpen();
         toast.success(`successfully connected ${dummy}`, toastSuccess);
       } else {
@@ -97,7 +103,7 @@ function useUserAuth() {
 
   function onSignOut() {
     const status = onRemoveJwt();
-    onRemoveUser()
+    onRemoveUser();
     if (status) {
       navigate("/");
     }

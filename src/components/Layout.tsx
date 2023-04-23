@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, Outlet } from "react-router-dom";
 
 //store
-import useAuthenticationStore from "store/authentication/authentication.store";
+import useProfileStore from "store/profile/profile.store";
 
 //components
 import Footer from "components/Footer";
@@ -15,7 +15,7 @@ import DropdownProfile from "./navigatebar/DropdownProfile";
 
 function Layout() {
   //store
-  const jwtToken = useAuthenticationStore((state) => state.jwt);
+  const user = useProfileStore((state) => state.user);
 
   //useState
   const [scrollY, setScrollY] = useState(window.scrollY || 0);
@@ -57,7 +57,7 @@ function Layout() {
             <ul className='hidden md:flex justify-between items-center'>
               <OnCreateLi showStyleState={true} />
             </ul>
-            {jwtToken ? <></> : <HamburgerMenu />}
+            {user ? <></> : <HamburgerMenu />}
             <DropdownProfile />
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 import getAverageRGB from "./getAverageRGB";
 
@@ -8,6 +8,8 @@ type useAverageRGBPropsType = {
 
 function useAverageRGB({ imageUrl }: useAverageRGBPropsType) {
   const [averageColor, setAverageColor] = useState({ r: 0, g: 0, b: 0 });
+  const preImageUrl = useRef<string | null>(null);
+  const preAverageColor = useRef({ r: 0, g: 0, b: 0 });
 
   useEffect(() => {
     if (!imageUrl) {
@@ -15,13 +17,20 @@ function useAverageRGB({ imageUrl }: useAverageRGBPropsType) {
       return;
     }
 
-    const img = new Image();
-    img.src = imageUrl;
-    img.crossOrigin = "Anonymous";
-    img.onload = () => {
-      const color = getAverageRGB({ imgEl: img });
-      setAverageColor(color);
-    };
+    if (imageUrl !== preImageUrl.current) {
+      preImageUrl.current = imageUrl;
+
+      const img = new Image();
+      img.src = imageUrl;
+      img.crossOrigin = "Anonymous";
+      img.onload = () => {
+        const color = getAverageRGB({ imgEl: img });
+        setAverageColor(color);
+        preAverageColor.current = color;
+      };
+    } else {
+      setAverageColor(preAverageColor.current);
+    }
   }, [imageUrl]);
 
   return averageColor;

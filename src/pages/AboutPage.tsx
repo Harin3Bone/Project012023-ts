@@ -5,13 +5,7 @@ import Timer from "components/addition/Timer";
 import "../style/App.css";
 import theme from "style/them";
 
-//hook
-import useRefreshAuthenticationPage from "hook/useRefreshPage/useRefreshAuthenticationPage";
-
 function AboutPage() {
-  //hook
-  useRefreshAuthenticationPage();
-
   return (
     <div className={`${theme.setPage}`}>
       <p>AboutPage</p>

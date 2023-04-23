@@ -66,13 +66,13 @@ function QuantityInput({ maxStock }: QuantityInputPropsType) {
   return (
     <div className='flex justify-between items-end w-28 mr-2'>
       <ButtonMultipurpose
-        onMouseDown={startIncreasing}
+        onMouseDown={startDecreasing}
         onMouseUp={stopChanging}
         onMouseLeave={stopChanging}
-        onClick={increaseQuantity}
+        onClick={decreaseQuantity}
         addition=' px-2 rounded-md bg-black text-white text-lg'
       >
-        +
+        -
       </ButtonMultipurpose>
       <input
         type='number'
@@ -83,13 +83,13 @@ function QuantityInput({ maxStock }: QuantityInputPropsType) {
         className=' w-12 border-2 rounded-md text-center text-lg'
       />
       <ButtonMultipurpose
-        onMouseDown={startDecreasing}
+        onMouseDown={startIncreasing}
         onMouseUp={stopChanging}
         onMouseLeave={stopChanging}
-        onClick={decreaseQuantity}
+        onClick={increaseQuantity}
         addition=' px-2 rounded-md bg-black text-white text-lg'
       >
-        -
+        +
       </ButtonMultipurpose>
     </div>
   );

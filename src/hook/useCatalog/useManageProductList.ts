@@ -10,7 +10,7 @@ import usePagination from "./usePagination";
 function useManageProductList() {
   const [products, category] = useCatalogData();
 
-  const { searchText, setSearchText, searchInput, handleSearchSubmit, handleSearchInputChange } =
+  const { searchText, setSearchText, searchRef, handleSearchSubmit} =
     useSearchProduct();
   const { currentPage, setCurrentPage, itemsPerPage, currentItems, handlePerPageChange } =
     usePagination();
@@ -34,9 +34,8 @@ function useManageProductList() {
 
   return {
     sortOrder,
-    searchInput,
+    searchRef,
     handleSearchSubmit,
-    handleSearchInputChange,
     handleCategorySubmit,
     handleResetForm,
     handleCategoryInputChange,

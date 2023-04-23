@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import checkTransparency from "./checkTransparency";
 
 type useCheckTransparencyPropsType = {
@@ -6,7 +6,9 @@ type useCheckTransparencyPropsType = {
 };
 
 function useCheckTransparency({ imageUrl }: useCheckTransparencyPropsType) {
-  const [isTransparent, setIsTransparent] = useState(false);
+  const [isTransparent, setIsTransparent] = useState<boolean>(false);
+  const preImageUrl = useRef<string | null>(null);
+  const preIsTransparent = useRef<boolean>(false);
 
   useEffect(() => {
     if (!imageUrl) {
@@ -14,13 +16,20 @@ function useCheckTransparency({ imageUrl }: useCheckTransparencyPropsType) {
       return;
     }
 
-    const img = new Image();
-    img.src = imageUrl;
-    img.crossOrigin = "Anonymous";
-    img.onload = () => {
-      const result = checkTransparency({ imgEl: img });
-      setIsTransparent(result);
-    };
+    if (imageUrl !== preImageUrl.current) {
+      preImageUrl.current = imageUrl;
+
+      const img = new Image();
+      img.src = imageUrl;
+      img.crossOrigin = "Anonymous";
+      img.onload = () => {
+        const result = checkTransparency({ imgEl: img });
+        setIsTransparent(result);
+        preIsTransparent.current = result;
+      };
+    } else {
+      setIsTransparent(preIsTransparent.current);
+    }
   }, [imageUrl]);
 
   return isTransparent;

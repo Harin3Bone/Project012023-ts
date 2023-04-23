@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 import theme from "style/them";
 
 //store
-import useAuthenticationStore from "store/authentication/authentication.store";
+import useProfileStore from "store/profile/profile.store";
 
 //constraint
 import { FULL_MENU_LIST } from "src/constraint/FULL_MENU_LIST";
@@ -16,14 +16,14 @@ type OnCreateLiPropTypes = {
 };
 
 function OnCreateLi({ showStyleState }: OnCreateLiPropTypes) {
-  const jwtToken = useAuthenticationStore((state) => state.jwt);
+  const user = useProfileStore((state) => state.user);
 
   //useMemo
   const menuList = useMemo(() => {
-    return jwtToken
+    return user
       ? FULL_MENU_LIST.filter((item) => !(item.path === "/sign-in" || item.path === "/sign-up"))
       : FULL_MENU_LIST.filter((item) => !item.private);
-  }, [jwtToken]);
+  }, [user]);
 
   return (
     <>

@@ -12,7 +12,7 @@ function OverviewProfile() {
   const user = useProfileStore((state) => state.user);
 
   return (
-    <div>
+    <div className="min-h-screen">
       <h1 className='text-4xl mb-12'>User account overview</h1>
       <div className='mb-12'>
         <h3 className='text-2xl mb-6'>Profile</h3>
@@ -25,6 +25,10 @@ function OverviewProfile() {
             <tr>
               <td className='w-1/2 border-b border-gray-500 pl-4 py-4 text-gray-500'>Email</td>
               <td className='w-1/2 border-b border-gray-500 pr-4 py-4 text-ellipsis'>{user?.email}</td>
+            </tr>
+            <tr>
+              <td className='w-1/2 border-b border-gray-500 pl-4 py-4 text-gray-500'>Address</td>
+              <td className='w-1/2 border-b border-gray-500 pr-4 py-4 text-ellipsis'></td>
             </tr>
           </tbody>
         </table>

@@ -1,3 +1,8 @@
+//reference Products https://www.frontendpractice.com/projects/backstage-talks
+//reference https://www.kingpower.com
+//reference https://www.facebook.com/photo?fbid=186873057464536&set=pcb.618229813483132
+//reference https://keychronthailand.com/products/k1?variant=44106952900840
+
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
@@ -6,10 +11,6 @@ import useProductData from "hook/useProductData";
 import PresentProduct from "components/product/PresentProduct";
 import ImageModal from "components/product/ImageModal";
 import AddToCartForm from "components/product/AddToCartForm";
-
-//reference Products https://www.frontendpractice.com/projects/backstage-talks
-//reference https://www.kingpower.com
-//reference https://www.facebook.com/photo?fbid=186873057464536&set=pcb.618229813483132
 
 function Products() {
   const [searchParams] = useSearchParams();

@@ -4,12 +4,11 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 // https://flowbite.com/docs/forms/search-input/
 
 type SearchBoxPropsType = {
-  value?: string;
+  searchRef?: React.RefObject<HTMLInputElement>;
   onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void;
-  onChangeInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-function SearchBox({ value, onSubmitForm, onChangeInput }: SearchBoxPropsType) {
+function SearchBox({ searchRef, onSubmitForm}: SearchBoxPropsType) {
   return (
     <form className='w-full' onSubmit={onSubmitForm}>
       <label htmlFor='default-search' className='sr-only mb-2 text-sm text-gray-900'>
@@ -23,8 +22,7 @@ function SearchBox({ value, onSubmitForm, onChangeInput }: SearchBoxPropsType) {
           type='search'
           id='default-search'
           placeholder='Search'
-          value={value}
-          onChange={onChangeInput}
+          ref={searchRef}
           className='w-full p-4 pl-10 border border-gray-300 rounded-lg bg-gray-50 text-sm text-gray-900 focus:border-gray-300'
         ></input>
         <button
