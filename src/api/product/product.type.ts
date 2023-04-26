@@ -1,5 +1,5 @@
 export type ProductType = {
-  data?: ProductDataType;
+  data?: ProductDataType[];
   meta?: Meta;
 }
 
@@ -72,4 +72,12 @@ export type ProviderMetadata = {
 }
 
 export type Meta = {
+  pagination?: Pagination;
+}
+
+export type Pagination = {
+  page?:      number;
+  pageSize?:  number;
+  pageCount?: number;
+  total?:     number;
 }

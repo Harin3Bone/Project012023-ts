@@ -6,7 +6,6 @@ import { faDolly } from "@fortawesome/free-solid-svg-icons";
 import formatPrice from "helpers/*";
 
 type ProductPropTypes = {
-  id?: number;
   name?: string;
   price?: number;
   img?: string;
@@ -16,9 +15,9 @@ type ProductPropTypes = {
 
 //reference https://codepen.io/havardob/pen/RwVbaLo
 
-function Product({ id, name, price, img, imgName, stock }: ProductPropTypes) {
+function Product({name, price, img, imgName, stock }: ProductPropTypes) {
   return (
-    <NavLink to={`products?id=${id}`}>
+    <NavLink to={`products?name=${name}`}>
       <div className='relative w-56 p-4 pb-2 rounded-2xl bg-white shadow-2xl ease-in delay-100 overflow-hidden hover:-translate-y-1 hover:drop-shadow-lg'>
         <div className='flex items-center justify-center rounded-lg border-2 border-[#f7f0f0] bg-white overflow-hidden'>
           <img src={img} alt={imgName} className='block max-w-full h-40' loading='lazy' />

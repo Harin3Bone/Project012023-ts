@@ -18,15 +18,14 @@ function Products() {
   //useState
   const [isImgOpen, setIsImgOpen] = useState<boolean>(false);
 
-  const dummy = searchParams.get("id") || "";
-  const product = useProductData({ item: dummy });
-  // console.log(product?.data);
+  const populate = searchParams.get("name") || "";
+  const product = useProductData({ item: populate });
+  const productData = product?.data && product.data[0];
 
-  const price: number = product?.data?.price ? product?.data?.price : 0;
-  const stockNumber: number = product?.data?.stock ? product?.data?.stock : 0;
-  const productImageUrl: string = product?.data?.img?.formats?.small?.url
-    ? product?.data?.img?.formats?.small?.url
-    : "";
+  const price: number = productData?.price ?? 0;
+  const stockNumber: number = productData?.stock ?? 0;
+  const productImageUrl: string = productData?.img?.formats?.small?.url ?? "";
+  const productImageAlt: string = productData?.img?.formats?.small?.hash ?? "";
 
   useEffect(() => {
     if (isImgOpen) {
@@ -45,7 +44,7 @@ function Products() {
       <div className={isImgOpen ? "block" : "hidden"}>
         <ImageModal
           productImageUrl={productImageUrl}
-          alt={product?.data?.img?.formats?.small?.hash}
+          alt={productImageAlt}
           onClose={() => setIsImgOpen(false)}
         />
       </div>
@@ -54,26 +53,26 @@ function Products() {
           <div className='hidden md:block'>
             <PresentProduct
               productImageUrl={productImageUrl}
-              alt={product?.data?.img?.formats?.small?.hash}
+              alt={productImageAlt}
               onOpen={() => setIsImgOpen((prevIsImgOpen) => !prevIsImgOpen)}
             />
           </div>
           <div className='w-[20rem] sm:w-[26rem] md:w-[22rem] px-4 sm:px-0 md:pl-4 lg:pl-0 lg:pr-4 md:mt-4'>
             <p className='inline-block whitespace-nowrap px-4 py-1 rounded-full bg-black text-white text-sm sm:text-base'>
-              {product?.data?.category?.desc}
+              {productData?.category?.desc}
             </p>
-            <h2 className=' mt-2 text-3xl sm:text-4xl'>{product?.data?.name}</h2>
+            <h2 className=' mt-2 text-3xl sm:text-4xl'>{productData?.name}</h2>
             <p className='mb-4 text-sm sm:text-base'>
-              SKU : {product?.data?.stock && new Intl.NumberFormat().format(stockNumber)}
+              SKU : {new Intl.NumberFormat().format(stockNumber)}
             </p>
             <div className='block md:hidden'>
               <PresentProduct
                 productImageUrl={productImageUrl}
-                alt={product?.data?.img?.formats?.small?.hash}
+                alt={productImageAlt}
                 onOpen={() => setIsImgOpen((prevIsImgOpen) => !prevIsImgOpen)}
               />
             </div>
-            <p className='text-justify text-sm sm:text-base'>{product?.data?.desc}</p>
+            <p className='text-justify text-sm sm:text-base'>{productData?.desc}</p>
             <AddToCartForm price={price} maxStock={stockNumber} />
           </div>
         </div>

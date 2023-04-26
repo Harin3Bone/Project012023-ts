@@ -1,9 +1,9 @@
 //reference https://keychronthailand.com/checkouts/c/72c2609f5eb614429b4f59993bddc504/information
 
-//type
+//component
 import InputField from "components/input/InputField";
 
-//component
+//type
 import { addressDataType } from "types/address.type";
 
 type AddressPropsType = {

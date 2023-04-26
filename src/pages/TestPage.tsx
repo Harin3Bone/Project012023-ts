@@ -1,12 +1,9 @@
-import "style/App.css";
-
-import Footer from "components/Footer";
+import HeroCarousel from "components/carousel/HeroCarousel";
 
 function TestPage() {
   return (
     <div>
-      <p>test</p>
-      <Footer/>
+      <HeroCarousel/>
     </div>
   );
 }

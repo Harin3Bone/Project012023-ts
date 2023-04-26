@@ -66,7 +66,6 @@ function ProductsList() {
                 return (
                   <Product
                     key={data.id}
-                    id={data.id}
                     name={data.name}
                     price={data.price}
                     img={data.img?.formats?.small?.url}
