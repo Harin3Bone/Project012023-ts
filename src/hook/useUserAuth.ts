@@ -28,6 +28,9 @@ export type informationFormClassificationType = {
 } & informationFormType;
 
 function useUserAuth() {
+  //useNavigate
+  const navigate = useNavigate();
+
   //store
   const { onSetJwt, onRemoveJwt } = useAuthenticationStore(
     (state) => ({
@@ -46,9 +49,6 @@ function useUserAuth() {
 
   //hook
   const { onUpdateIsOpen } = useGlobalLoading();
-
-  //useNavigate
-  const navigate = useNavigate();
 
   //useState
   const [informationForm, setInformationForm] = useState<informationFormType>({

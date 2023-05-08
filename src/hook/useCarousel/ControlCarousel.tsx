@@ -64,8 +64,6 @@ function ControlCarousel() {
     }
   }, []);
 
-  console.log(activeIndex);
-
   return {
     activeIndex,
     carouselRef,
@@ -76,3 +74,7 @@ function ControlCarousel() {
 }
 
 export default ControlCarousel;
+//Math.round() จะทำให้ค่าที่คำนวณได้ปัดเศษขึ้นหรือลงให้เป็นจำนวนเต็มที่ใกล้เคียงที่สุด
+//carouselRef.current.scrollLeft คือความกว้างของเส้นที่เลื่อนแล้วในแกน X ของ carouselRef.current (ความกว้างที่เลื่อนไปแล้วจากขอบซ้ายของ Carousel)
+//carouselRef.current.clientWidth คือความกว้างของ viewport (พื้นที่แสดงผล) ของ carouselRef.current (ความกว้างของหน้าที่แสดงอยู่ในขณะนั้น)
+//carouselRef.current.scrollWidth คือความกว้างทั้งหมดของข้อมูลภายในเชิงเส้นของ carouselRef.current (ความกว้างของ Carousel ทั้งหมดรวมทุกหน้า)

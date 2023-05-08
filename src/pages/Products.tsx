@@ -22,6 +22,7 @@ function Products() {
   const product = useProductData({ item: populate });
   const productData = product?.data && product.data[0];
 
+  const productID: number = productData?.id ?? 0;
   const price: number = productData?.price ?? 0;
   const stockNumber: number = productData?.stock ?? 0;
   const productImageUrl: string = productData?.img?.formats?.small?.url ?? "";
@@ -73,7 +74,7 @@ function Products() {
               />
             </div>
             <p className='text-justify text-sm sm:text-base'>{productData?.desc}</p>
-            <AddToCartForm price={price} maxStock={stockNumber} />
+            <AddToCartForm productId={productID} price={price} maxStock={stockNumber} />
           </div>
         </div>
       </div>

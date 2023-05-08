@@ -44,9 +44,6 @@ function HeroCarousel() {
 }
 
 export default HeroCarousel;
-//carouselRef.current.scrollLeft คือความกว้างของเส้นที่เลื่อนแล้วในแกน X ของ carouselRef.current (ความกว้างที่เลื่อนไปแล้วจากขอบซ้ายของ Carousel)
-//carouselRef.current.clientWidth คือความกว้างของ viewport (พื้นที่แสดงผล) ของ carouselRef.current (ความกว้างของหน้าที่แสดงอยู่ในขณะนั้น)
-//carouselRef.current.scrollWidth คือความกว้างทั้งหมดของข้อมูลภายในเชิงเส้นของ carouselRef.current (ความกว้างของ Carousel ทั้งหมดรวมทุกหน้า)
 //css flex คือ Flexbox ซึ่งเป็นโมเดลการกำหนดเค้าโครงที่มีความยืดหยุ่น และใช้ในการจัดวางองค์ประกอบภายใน container ที่มีคุณสมบัติ display: flex หรือ display: inline-flex คุณสมบัติ flex เป็นคุณสมบัติสั้น (shorthand) สำหรับ flex-grow, flex-shrink, และ flex-basis ซึ่งควบคุมวิธีการยืดหยุ่นขององค์ประกอบใน container นี้
 //css scroll-snap-type กำหนดวิธีการที่องค์ประกอบหลัก (scroll container) จะเข้ากับองค์ประกอบย่อย (scroll items) ขณะเลื่อน ค่าที่เป็นไปได้คือ none, mandatory, และ proximity โดยค่าเริ่มต้นคือ none ซึ่งไม่มีการปรับตัวเลื่อนเข้ากันใดๆ
 //css scroll-behavior กำหนดวิธีการเลื่อนขององค์ประกอบหลัก ค่าที่เป็นไปได้คือ auto และ smooth ค่าเริ่มต้นคือ auto ซึ่งจะให้การเลื่อนปกติ ส่วน smooth จะให้การเลื่อนที่มีการเฉือน (smooth scrolling)

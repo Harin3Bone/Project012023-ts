@@ -1,7 +1,6 @@
 //components
 import FormSign from "components/FormSign";
 
-
 //hook
 import useUserAuth from "hook/useUserAuth";
 import useRefreshUnAuthenticatedPage from "hook/useRefreshPage/useRefreshUnAuthenticatedPage";
@@ -28,4 +27,3 @@ function SignInPage() {
 }
 
 export default SignInPage;
-// w 360 = w-[19.5rem]

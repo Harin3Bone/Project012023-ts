@@ -6,7 +6,7 @@ type CarouselPaginationPropsType = {
 
 function CarouselPagination({ itemCount,activeIndex, onPaginationItemClick }: CarouselPaginationPropsType) {
   return (
-    <div className=" absolute bottom-4 left-1/2 flex justify-center gap-4 z-20">
+    <div className=" absolute bottom-4 left-1/2 flex justify-center gap-4 -translate-x-10 z-20">
       {Array.from({ length: itemCount }, (_, index) => (
         <button 
           key={index} 
