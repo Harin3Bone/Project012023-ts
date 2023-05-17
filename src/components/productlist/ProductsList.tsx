@@ -36,13 +36,13 @@ function ProductsList() {
           <SearchBox searchRef={searchRef} onSubmitForm={handleSearchSubmit} />
           <div className='flex justify-end items-center w-full mt-6'>
             <SelectSort
-              options={itemsPerPageOptions}
+              options={Array.from(itemsPerPageOptions)}
               value={itemsPerPage}
               onChange={handlePerPageChange}
               className='hidden sm:block w-52 rounded-md border border-gray-300 mr-2 px-3 py-2 text-slate-800'
             />
             <SelectSort
-              options={sortOrderOptions}
+              options={Array.from(sortOrderOptions)}
               value={sortOrder}
               onChange={handleSortOrderChange}
               className='w-52 rounded-md border border-gray-300 px-3 py-2 text-slate-800'
