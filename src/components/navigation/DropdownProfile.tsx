@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import { NavLink } from "react-router-dom";
 
 //store
@@ -14,6 +14,19 @@ function ProfileDropdown() {
 
   const [isDropdownOpen, setIsDropdownOpen] = useState<boolean>(false);
 
+  useEffect(() => {
+    if(isDropdownOpen){
+      document.body.style.overflowY = "hidden"
+    }else{
+      document.body.style.overflowY = "auto"
+    }
+  
+    return () => {
+      document.body.style.overflowY = "auto"
+    }
+  }, [isDropdownOpen])
+  
+
   return (
     <div className={user ? "block" : "hidden"}>
       <button
@@ -24,7 +37,7 @@ function ProfileDropdown() {
       </button>
       <div className={isDropdownOpen ? " block" : " hidden"}>
         <div
-          className='absolute inset-0 w-screen h-screen bg-transparent -z-10'
+          className='absolute inset-0 min-h-screen bg-transparent z-30'
           onClick={() => setIsDropdownOpen(false)}
         />
         <div className='absolute flex justify-center top-20 right-1 lg:right-10 xl:right-16 w-72 rounded-2xl bg-[#35363a] shadow-xl z-40'>

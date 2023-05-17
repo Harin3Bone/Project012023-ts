@@ -9,7 +9,7 @@ import Footer from "components/Footer";
 
 function Layout() {
   return (
-    <div className='flex flex-col min-h-[100vh] '>
+    <div className='flex flex-col min-h-screen'>
       <NavigationBar />
       <div className='flex-grow'>
         <Outlet />

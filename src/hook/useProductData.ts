@@ -8,7 +8,7 @@ import useProductStore from "store/product/product.store";
 import { useGlobalLoading } from "./useGlobalLoading";
 import { onGetProductPropType } from "api/product";
 
-function useProductData(item: onGetProductPropType) {
+function useProductData({ IdProduct, item }: onGetProductPropType) {
   const { data, error, getProduct } = useProductStore(
     (state) => ({
       data: state.data,
@@ -22,8 +22,10 @@ function useProductData(item: onGetProductPropType) {
 
   useEffect(() => {
     onUpdateIsOpen();
-    getProduct(item);
-    onUpdateIsOpen();
+    if(IdProduct || item){
+      getProduct({IdProduct,item});
+      onUpdateIsOpen();
+    }
   }, []);
 
   function loadData() {

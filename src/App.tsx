@@ -10,7 +10,7 @@ import GlobalLoadingProvider from "./context/loading/GlobalLoadingProvider";
 
 //Page
 import HomePage from "./pages/HomePage";
-import Products from "pages/Products";
+import ProductsPage from "pages/ProductsPage";
 import AboutPage from "./pages/AboutPage";
 import AccountPage from "./pages/AccountPage";
 import OverviewProfile from "pages/profile/OverviewProfile";
@@ -53,7 +53,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
           <Route index element={<HomePage />} caseSensitive />
-          <Route path='products' element={<Products />} caseSensitive />
+          <Route path='products' element={<ProductsPage />} caseSensitive />
           <Route element={<PrivateRoute />}>
             <Route path='about' element={<AboutPage />} caseSensitive />
             <Route path='account' element={<AccountPage/>} caseSensitive >

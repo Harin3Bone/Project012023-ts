@@ -1,9 +1,6 @@
 import { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-
 //store
 import useProfileStore from "store/profile/profile.store";
 
@@ -11,6 +8,7 @@ import useProfileStore from "store/profile/profile.store";
 import OnCreateLi from "./OnCreateLi";
 import HamburgerMenu from "./HamburgerMenu";
 import DropdownProfile from "./DropdownProfile";
+import CartModal from "../CartDrawer/CartModal";
 
 function NavigationBar() {
   const user = useProfileStore((state) => state.user);
@@ -49,11 +47,7 @@ function NavigationBar() {
           <h1 className='m-2 text-2xl md:text-3xl lg:text-4xl cursor-pointer select-none '>Test</h1>
         </NavLink>
         <div className='flex justify-between items-center'>
-          <div className='w-12'>
-            <NavLink to='/'>
-              <FontAwesomeIcon icon={faCartShopping} size='lg' />
-            </NavLink>
-          </div>
+          <CartModal/>
           <ul className='hidden md:flex justify-between items-center'>
             <OnCreateLi showStyleState={true} />
           </ul>

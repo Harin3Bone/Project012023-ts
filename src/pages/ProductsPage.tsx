@@ -6,13 +6,15 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
+//hook
 import useProductData from "hook/useProductData";
 
+//component
 import PresentProduct from "components/product/PresentProduct";
 import ImageModal from "components/product/ImageModal";
 import AddToCartForm from "components/product/AddToCartForm";
 
-function Products() {
+function ProductsPage() {
   const [searchParams] = useSearchParams();
 
   //useState
@@ -82,7 +84,7 @@ function Products() {
   );
 }
 
-export default Products;
+export default ProductsPage;
 //const dummy = searchParams.get("id") || ""; คือการทำให้ dummy เป็น string อย่าเดียว
 // {/* <code>{JSON.stringify(product?.data)}</code> */}
 //inline-block และ whitespace-nowrap จะทำให้ปรับขนาดตามจำนวนอักษรและป้องกันการขึ้นบรรทัดใหม่

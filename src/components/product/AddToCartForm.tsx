@@ -41,11 +41,11 @@ function AddToCartForm({ productId, price, maxStock = 100 }: AddToCartFormPropsT
       if (user) {
         const cartItem = {
           id: productId,
-          price: price,
+          timestamp: Date.now(),
           quantity: selectedQuantity,
         };
-
-        addItemToCart(cartItem);
+    
+        addItemToCart(user.email,cartItem);
         toast.success(`Product added to cart successfully!`, toastSuccess);
       } else {
         navigate("/sign-in", { state: { from: location } });

@@ -12,7 +12,7 @@ import { ProductType } from "api/product/product.type";
 type useProductStoreType = {
   data: ProductType | null;
   error: string | null;
-  getProduct: ({ item }: onGetProductPropType) => Promise<void>;
+  getProduct: ({ IdProduct, item }: onGetProductPropType) => Promise<void>;
 };
 
 const useProductStore = create<useProductStoreType>()(
@@ -20,8 +20,8 @@ const useProductStore = create<useProductStoreType>()(
     (set) => ({
       data: null,
       error: null,
-      getProduct: async (item) => {
-        const [data, error] = await onGetProduct(item);
+      getProduct: async ({ IdProduct, item }) => {
+        const [data, error] = await onGetProduct({ IdProduct, item });
         error
           ? set({ error: error }, false, "getProductError")
           : set({ data: data }, false, "getProductSuccessfully");
