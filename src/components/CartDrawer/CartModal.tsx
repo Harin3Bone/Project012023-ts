@@ -24,10 +24,11 @@ function CartModal() {
     };
   }, [isOpen]);
 
+
   const currentUserCart = userCarts.find((userCart) => userCart.email === user?.email);
   const itemCount = currentUserCart ? currentUserCart.items.length : 0;
   const isOver99Items = itemCount > 99;
-
+  
   const handleOpen = () => setIsOpen((prev) => !prev);
 
   return (

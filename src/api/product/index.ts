@@ -8,8 +8,8 @@ import { AxiosReturn } from "types/Api.type";
 import { ProductType } from "./product.type";
 
 export type onGetProductPropType = {
-  IdProduct?: number;
-  item?: string;
+  IdProduct: number | null;
+  item: string | null;
 };
 
 export async function onGetProduct({

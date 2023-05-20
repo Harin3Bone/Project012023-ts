@@ -13,7 +13,6 @@ function OverviewProfile() {
   const navigate = useNavigate();
 
   const user = useProfileStore((state) => state.user);
-  console.log(user);
 
   return (
     <div className='min-h-screen'>

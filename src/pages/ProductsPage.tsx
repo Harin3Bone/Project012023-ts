@@ -21,7 +21,7 @@ function ProductsPage() {
   const [isImgOpen, setIsImgOpen] = useState<boolean>(false);
 
   const populate = searchParams.get("name") || "";
-  const product = useProductData({ item: populate });
+  const product = useProductData({ IdProduct: null, item: populate });
   const productData = product?.data && product.data[0];
 
   const productID: number = productData?.id ?? 0;

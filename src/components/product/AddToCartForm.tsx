@@ -51,7 +51,7 @@ function AddToCartForm({ productId, price, maxStock = 100 }: AddToCartFormPropsT
         navigate("/sign-in", { state: { from: location } });
       }
     },
-    [productId, price, selectedQuantity],
+    [productId, selectedQuantity],
   );
 
   return (

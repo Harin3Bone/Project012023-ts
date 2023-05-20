@@ -3,7 +3,7 @@ import { devtools, persist } from "zustand/middleware";
 
 import { definedStore } from "helpers/*";
 
-type CartItem = {
+export type CartItem = {
   id: number;
   timestamp: number;
   quantity: number;
